@@ -1,0 +1,15 @@
+﻿
+
+@model CategoryVM
+<div class="container mt-4">
+    <h2>Yeni Kateqoriya</h2>
+    <form asp-action="Create">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Kateqoriya Adı</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Yadda Saxla</button>
+        <a asp-action="Index" class="btn btn-secondary">Geri</a>
+    </form>
+</div>
