@@ -1,0 +1,65 @@
+﻿
+@model ProductVM
+@{
+    ViewData["Title"] = "Yeni Məhsul";
+}
+
+<div class="container mt-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Yeni Məhsul Yarat</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold">Ad</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="CategoryId" class="form-label fw-bold">Kateqoriya</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
+                            <option disabled selected>-- Seçin --</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Price" class="form-label fw-bold">Qiymət</label>
+                        <input asp-for="Price" type="number" step="0.01" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="MainImage" class="form-label fw-bold text-primary">
+                            <i class="bi bi-image"></i> Əsas Şəkil (Vitrin)
+                        </label>
+                        <input asp-for="MainImage" class="form-control" type="file" accept="image/*" />
+                        <span asp-validation-for="MainImage" class="text-danger"></span>
+                        <small class="text-muted">Bu şəkil məhsul siyahısında görünəcək.</small>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="AdditionalImages" class="form-label fw-bold text-secondary">
+                            <i class="bi bi-images"></i> Əlavə Şəkillər
+                        </label>
+                        <input asp-for="AdditionalImages" class="form-control" type="file" multiple accept="image/*" />
+                        <small class="text-muted">Ctrl düyməsini basaraq bir neçə şəkil seçə bilərsiniz.</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Təsvir</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Yadda Saxla</button>
+                <a asp-action="Index" class="btn btn-secondary">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

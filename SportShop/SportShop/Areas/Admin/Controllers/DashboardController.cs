@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
+using SportShop.ViewModels.DashboardVM;
+using SportShop.ViewModels.ProductVMs;
 
 namespace SportShop.Areas.Admin.Controllers
 {
@@ -14,15 +17,36 @@ namespace SportShop.Areas.Admin.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            
+            int productCount = await _context.Products.CountAsync();
+            int categoryCount = await _context.Categories.CountAsync();
 
-            ViewBag.ProductCount = _context.Products.Count();
-            ViewBag.CategoryCount = _context.Categories.Count();
-            ViewBag.ReviewCount = _context.Reviews.Count();
-            // OrderCount - gələcəkdə əlavə edəcəksiniz
+         
+            var recentProducts = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Images) 
+                .OrderByDescending(p => p.Id) 
+                .Take(5) 
+                .Select(p => new ProductListVM
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    CategoryName = p.Category.Name,
+                    MainImageUrl = p.Images.FirstOrDefault(i => i.IsMain).Url
+                })
+                .ToListAsync();
 
-            return View();
+            var model = new DashboardVM
+            {
+                ProductCount = productCount,
+                CategoryCount = categoryCount,
+                RecentProducts = recentProducts
+            };
+
+            return View(model);
         }
     }
 }

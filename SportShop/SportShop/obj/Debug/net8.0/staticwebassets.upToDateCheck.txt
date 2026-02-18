@@ -24,6 +24,10 @@ wwwroot\assets\img\favicon.ico
 wwwroot\assets\img\feature_prod_01.jpg
 wwwroot\assets\img\feature_prod_02.jpg
 wwwroot\assets\img\feature_prod_03.jpg
+wwwroot\assets\img\products\2b74e349-0e1e-4257-8f67-d2aa8f9457e5_Без названия (1).jpg
+wwwroot\assets\img\products\72d9d854-900c-4ae3-9c28-d27147742b16_Без названия (3).jpg
+wwwroot\assets\img\products\81d34fa5-6410-42cf-9816-92482b1931cd_Без названия (2).jpg
+wwwroot\assets\img\products\d434fd9a-9c8d-41d5-acd1-e2c08a807030_images.jpg
 wwwroot\assets\img\product_single_01.jpg
 wwwroot\assets\img\product_single_02.jpg
 wwwroot\assets\img\product_single_03.jpg
@@ -71,3 +75,5 @@ wwwroot\assets\webfonts\slick.eot
 wwwroot\assets\webfonts\slick.svg
 wwwroot\assets\webfonts\slick.ttf
 wwwroot\assets\webfonts\slick.woff
+wwwroot\images\products\8ff301ac-9447-450f-8415-b6b14cb42679_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
+wwwroot\images\products\f7a8758b-8e0b-40f4-b67f-d0fc71284b15_Без названия (5).jpg

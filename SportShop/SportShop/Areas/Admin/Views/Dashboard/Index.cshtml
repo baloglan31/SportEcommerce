@@ -1,139 +1,71 @@
-﻿@{
+﻿
+@model DashboardVM
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="row g-4 mb-4">
-    <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-white bg-primary shadow h-100">
+<div class="row mb-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="card bg-primary text-white">
             <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="card-title mb-0">Ümumi Məhsullar</h6>
-                        <h2 class="my-2 display-6 fw-bold">@ViewBag.ProductCount</h2>
-                    </div>
-                    <i class="bi bi-box-seam display-4 opacity-50"></i>
-                </div>
-            </div>
-            <div class="card-footer d-flex align-items-center justify-content-between small">
-                <a class="text-white stretched-link" asp-controller="Product" asp-action="Index">Detallara bax</a>
-                <i class="bi bi-chevron-right"></i>
+                <h3>@Model.ProductCount</h3>
+                <p>Cəmi Məhsul</p>
             </div>
         </div>
     </div>
-
-    <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-white bg-success shadow h-100">
+    <div class="col-md-6 col-lg-3">
+        <div class="card bg-success text-white">
             <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="card-title mb-0">Kateqoriyalar</h6>
-                        <h2 class="my-2 display-6 fw-bold">@ViewBag.CategoryCount</h2>
-                    </div>
-                    <i class="bi bi-tags display-4 opacity-50"></i>
-                </div>
-            </div>
-            <div class="card-footer d-flex align-items-center justify-content-between small">
-                <a class="text-white stretched-link" href="#">Detallara bax</a>
-                <i class="bi bi-chevron-right"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-white bg-warning shadow h-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="card-title mb-0">Yeni Sifarişlər</h6>
-                        <h2 class="my-2 display-6 fw-bold">0</h2>
-                    </div>
-                    <i class="bi bi-cart-check display-4 opacity-50"></i>
-                </div>
-            </div>
-            <div class="card-footer d-flex align-items-center justify-content-between small">
-                <a class="text-white stretched-link" href="#">Detallara bax</a>
-                <i class="bi bi-chevron-right"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-white bg-danger shadow h-100">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h6 class="card-title mb-0">Rəylər</h6>
-                        <h2 class="my-2 display-6 fw-bold">@ViewBag.ReviewCount</h2>
-                    </div>
-                    <i class="bi bi-chat-left-text display-4 opacity-50"></i>
-                </div>
-            </div>
-            <div class="card-footer d-flex align-items-center justify-content-between small">
-                <a class="text-white stretched-link" href="#">Detallara bax</a>
-                <i class="bi bi-chevron-right"></i>
+                <h3>@Model.CategoryCount</h3>
+                <p>Cəmi Kateqoriya</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-8">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                <h6 class="m-0 font-weight-bold text-primary">Son Əlavə Olunan Məhsullar</h6>
-                <a asp-controller="Product" asp-action="Create" class="btn btn-sm btn-primary">+ Yeni</a>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Ad</th>
-                                <th>Qiymət</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Adidas Futbol Topu</td>
-                                <td>50.00 AZN</td>
-                                <td><span class="badge bg-success">Satışda</span></td>
-                            </tr>
-                            <tr>
-                                <td>Nike Qaçış Ayaqqabısı</td>
-                                <td>120.00 AZN</td>
-                                <td><span class="badge bg-secondary">Stok bitib</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Son Əlavə Olunan Məhsullar</h6>
     </div>
-
-    <div class="col-md-4">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bildirişlər</h6>
-            </div>
-            <div class="card-body">
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">Yeni rəy gəldi</h6>
-                            <small class="text-muted">3 dəq</small>
-                        </div>
-                        <small class="text-muted">Əli M. Adidas topu üçün rəy yazdı.</small>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">Yeni istifadəçi</h6>
-                            <small class="text-muted">1 saat</small>
-                        </div>
-                        <small class="text-muted">Vəli Q. qeydiyyatdan keçdi.</small>
-                    </a>
-                </div>
-            </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Şəkil</th>
+                        <th>Ad</th>
+                        <th>Kateqoriya</th>
+                        <th>Qiymət</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.RecentProducts.Any())
+                    {
+                        @foreach (var item in Model.RecentProducts)
+                        {
+                            <tr>
+                                <td style="width: 80px;">
+                                    <img src="@(item.MainImageUrl ?? "/assets/img/no-image.png")"
+                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;"
+                                         alt="Product Image" />
+                                </td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <span class="badge bg-info text-dark">@item.CategoryName</span>
+                                </td>
+                                <td class="text-success fw-bold">@item.Price AZN</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center">Hələ məhsul yoxdur.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
