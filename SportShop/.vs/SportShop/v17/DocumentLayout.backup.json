@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\areas\\admin\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\areas\\admin\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\areas\\admin\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\areas\\admin\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\areas\\admin\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\areas\\admin\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\viewmodels\\categoryvm\\categoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\viewmodels\\categoryvm\\categoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,19 +51,94 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Shared\\_ValidationScriptsPartial.cshtml*",
+              "RelativeToolTip": "SportShop\\Views\\Shared\\_ValidationScriptsPartial.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T15:14:53.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Areas\\Admin\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "SportShop\\Areas\\Admin\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAADEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T15:02:51.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Edit.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Areas\\Admin\\Views\\Category\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Edit.cshtml",
+              "RelativeToolTip": "SportShop\\Areas\\Admin\\Views\\Category\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T18:26:55.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "RelativeToolTip": "SportShop\\Areas\\Admin\\Views\\Category\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T18:24:22.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "RelativeToolTip": "SportShop\\Areas\\Admin\\Views\\Category\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-17T18:21:55.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CategoryVM.cs",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\CategoryVM\\CategoryVM.cs",
+              "RelativeDocumentMoniker": "SportShop\\ViewModels\\CategoryVM\\CategoryVM.cs",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\CategoryVM\\CategoryVM.cs",
+              "RelativeToolTip": "SportShop\\ViewModels\\CategoryVM\\CategoryVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T18:20:16.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "SportShop\\Areas\\Admin\\Controllers\\CategoryController.cs",
               "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Areas\\Admin\\Controllers\\CategoryController.cs",
               "RelativeToolTip": "SportShop\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAawBoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-17T17:59:38.687Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Program.cs",
               "RelativeDocumentMoniker": "SportShop\\Program.cs",
@@ -47,8 +146,7 @@
               "RelativeToolTip": "SportShop\\Program.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAgwDAAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-17T17:10:16.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-17T17:10:16.509Z"
             }
           ]
         }

@@ -18,7 +18,13 @@ namespace SportShop.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Categories.ToListAsync());
+            var categories = await _context.Categories.ToListAsync();
+            var categoryVMs = categories.Select(c => new CategoryVM
+            {
+                Id = c.Id,
+                Name = c.Name
+            }).ToList();
+            return View(categoryVMs);
         }
 
         public IActionResult Create()
@@ -80,27 +86,19 @@ namespace SportShop.Areas.Admin.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var category = await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null) return NotFound();
-
-            return View(category); 
-        }
-
-
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var category = await _context.Categories.FindAsync(id);
-            if (category != null)
+            if (category == null)
             {
-                _context.Categories.Remove(category);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
+
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
     }
