@@ -1,0 +1,48 @@
+﻿
+@model SliderCreateVM
+
+@{
+    ViewData["Title"] = "Yeni Slider Yarat";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Yeni Slider Yarat</h1>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label font-weight-bold"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Məs: Yeni Kolleksiya" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Subtitle" class="form-label font-weight-bold"></label>
+                    <input asp-for="Subtitle" class="form-control" placeholder="Məs: Bütün ayaqqabılara 20% endirim" />
+                    <span asp-validation-for="Subtitle" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Link" class="form-label font-weight-bold"></label>
+                    <input asp-for="Link" class="form-control" placeholder="Məs: /Product/Index" />
+                    <span asp-validation-for="Link" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageFile" class="form-label font-weight-bold"></label>
+                    <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Yadda Saxla</button>
+                <a asp-action="Index" class="btn btn-secondary">Geriyə Qayıt</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

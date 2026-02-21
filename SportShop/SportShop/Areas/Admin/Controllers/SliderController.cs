@@ -24,13 +24,13 @@ namespace SportShop.Areas.Admin.Controllers
             return View(sliders);
         }
 
-        // 2. YARATMAQ - GET
+  
         public IActionResult Create()
         {
             return View();
         }
 
-        // 3. YARATMAQ - POST
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SliderCreateVM model)
@@ -44,7 +44,7 @@ namespace SportShop.Areas.Admin.Controllers
                     Link = model.Link
                 };
 
-                // Şəkil Yükləmə Əməliyyatı
+               
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "assets/img/sliders");
                 if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
 
@@ -107,7 +107,7 @@ namespace SportShop.Areas.Admin.Controllers
                         if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
                     }
 
-                    // Yeni şəkli yüklə
+                    
                     string uploadsFolder = Path.Combine(_env.WebRootPath, "assets/img/sliders");
                     if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
 

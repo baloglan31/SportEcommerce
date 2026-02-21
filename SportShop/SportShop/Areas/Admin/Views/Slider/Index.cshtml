@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Slider>
+
+@{
+    ViewData["Title"] = "Slider Siyahısı";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Slider Siyahısı</h1>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Yeni Slider Yarat
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Şəkil</th>
+                            <th>Başlıq</th>
+                            <th>Alt Başlıq</th>
+                            <th>Link</th>
+                            <th style="width: 150px;">Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" alt="Slider Image" style="width: 100px; height: 50px; object-fit: cover; border-radius: 5px;" />
+                                    </td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Subtitle</td>
+                                    <td>@item.Link</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-pen"></i> Redaktə
+                                        </a>
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline" onsubmit="return confirm('Bu slider-i silmək istədiyinizə əminsiniz?');">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Sil
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center">Hələ heç bir slider əlavə edilməyib.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

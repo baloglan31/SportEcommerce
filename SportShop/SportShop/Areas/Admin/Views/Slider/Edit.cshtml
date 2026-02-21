@@ -1,0 +1,59 @@
+﻿@model SliderUpdateVM
+
+@{
+    ViewData["Title"] = "Slider-i Redaktə Et";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">Slider-i Redaktə Et</h1>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ExistingImageUrl" />
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label font-weight-bold"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Subtitle" class="form-label font-weight-bold"></label>
+                    <input asp-for="Subtitle" class="form-control" />
+                    <span asp-validation-for="Subtitle" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Link" class="form-label font-weight-bold"></label>
+                    <input asp-for="Link" class="form-control" />
+                    <span asp-validation-for="Link" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">Mövcud Şəkil:</label><br />
+                    @if (!string.IsNullOrEmpty(Model.ExistingImageUrl))
+                    {
+                        <img src="@Model.ExistingImageUrl" alt="Current Image" style="width: 300px; height: 150px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;" />
+                    }
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ImageFile" class="form-label font-weight-bold"></label>
+                    <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    <small class="text-muted">Yeni şəkil seçməsəniz, köhnə şəkil olduğu kimi qalacaq.</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Dəyişiklikləri Yadda Saxla</button>
+                <a asp-action="Index" class="btn btn-secondary">Geriyə Qayıt</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

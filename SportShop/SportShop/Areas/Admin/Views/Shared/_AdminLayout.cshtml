@@ -95,6 +95,12 @@
                     <i class="bi bi-box-seam-fill me-2"></i> Məhsullar
                 </a>
             </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Slider" asp-action="Index"
+                   class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Slider" ? "active" : "")">
+                    <i class="bi bi-images me-2"></i> Slider
+                </a>
+            </li>
         </ul>
 
         <div class="p-3 border-top border-secondary mt-auto">

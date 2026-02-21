@@ -24,9 +24,15 @@ wwwroot\assets\img\favicon.ico
 wwwroot\assets\img\feature_prod_01.jpg
 wwwroot\assets\img\feature_prod_02.jpg
 wwwroot\assets\img\feature_prod_03.jpg
+wwwroot\assets\img\products\1733fdd7-e9cb-40da-a85d-34bf7dabbe89_istockphoto-2177205396-612x612.jpg
 wwwroot\assets\img\products\2b74e349-0e1e-4257-8f67-d2aa8f9457e5_Без названия (1).jpg
+wwwroot\assets\img\products\40f63037-b900-4af9-96e2-9000c4cfd1b4_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
+wwwroot\assets\img\products\4c05411b-998d-46df-b0f5-5849c9fd162c_artworks-ANE19EcNxyOvb3Pq-D4t8Ug-t500x500.jpg
 wwwroot\assets\img\products\72d9d854-900c-4ae3-9c28-d27147742b16_Без названия (3).jpg
 wwwroot\assets\img\products\81d34fa5-6410-42cf-9816-92482b1931cd_Без названия (2).jpg
+wwwroot\assets\img\products\933fe06b-d958-4744-8199-7c3683c94901_Без названия (4).jpg
+wwwroot\assets\img\products\b154d0c3-1e56-4250-a09f-c58da4a736b9_images (1).jpg
+wwwroot\assets\img\products\cc2ea177-a7fc-4bba-a0da-29373b87fb13_check.png
 wwwroot\assets\img\products\d434fd9a-9c8d-41d5-acd1-e2c08a807030_images.jpg
 wwwroot\assets\img\product_single_01.jpg
 wwwroot\assets\img\product_single_02.jpg
@@ -49,6 +55,8 @@ wwwroot\assets\img\shop_08.jpg
 wwwroot\assets\img\shop_09.jpg
 wwwroot\assets\img\shop_10.jpg
 wwwroot\assets\img\shop_11.jpg
+wwwroot\assets\img\sliders\3ad1658f-5c3b-4781-b733-f28a49e4bc11_images (1).jpg
+wwwroot\assets\img\sliders\d1dc4d6c-427e-48c6-b231-bd353d4cda0a_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
 wwwroot\assets\js\bootstrap.bundle.min.js
 wwwroot\assets\js\custom.js
 wwwroot\assets\js\jquery-1.11.0.min.js
