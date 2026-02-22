@@ -1,0 +1,74 @@
+﻿@model ShopVM
+
+@{
+    ViewData["Title"] = "Mağaza";
+}
+
+<div class="container py-5">
+    <div class="row">
+
+        <div class="col-lg-3">
+            <h1 class="h2 pb-4">Kateqoriyalar</h1>
+            <ul class="list-unstyled templatemo-accordion">
+                <li class="pb-3">
+                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none @(Model.SelectedCategoryId == null ? "text-success fw-bold" : "")" asp-controller="Shop" asp-action="Index" asp-route-categoryId="">
+                        Bütün Məhsullar
+                    </a>
+                </li>
+                @foreach (var cat in Model.Categories)
+                {
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none @(Model.SelectedCategoryId == cat.Id ? "text-success fw-bold" : "")"
+                           asp-controller="Shop" asp-action="Index" asp-route-categoryId="@cat.Id">
+                            @cat.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="row">
+                @if (Model.Products.Any())
+                {
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4 product-wap rounded-0 shadow-sm">
+                                <div class="card rounded-0">
+                                    <img class="card-img rounded-0 img-fluid" src="@(product.MainImageUrl ?? "/assets/img/no-image.png")" style="height: 250px; object-fit: cover;">
+                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        <ul class="list-unstyled">
+                                            <li><a class="btn btn-success text-white mt-2" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id"><i class="far fa-eye"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id" class="h3 text-decoration-none fw-bold">@product.Name</a>
+                                    <p class="mb-1 text-muted small">@product.CategoryName</p>
+                                    <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                        <li>
+                                            <i class="text-warning fa fa-star"></i>
+                                            <i class="text-warning fa fa-star"></i>
+                                            <i class="text-warning fa fa-star"></i>
+                                            <i class="text-muted fa fa-star"></i>
+                                            <i class="text-muted fa fa-star"></i>
+                                        </li>
+                                    </ul>
+                                    <p class="text-center mb-0 text-success fw-bold fs-5">@product.Price.ToString("C2")</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center py-5">
+                        <h4 class="text-muted">Bu kateqoriyada məhsul tapılmadı.</h4>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
