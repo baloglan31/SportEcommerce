@@ -2,9 +2,6 @@
 
     const addToCartBtns = document.querySelectorAll('.btn-add-to-cart');
 
-    const tokenMeta = document.querySelector('meta[name="csrf-token"]');
-    const csrfToken = tokenMeta ? tokenMeta.getAttribute('content') : null;
-
     addToCartBtns.forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault(); 
@@ -23,8 +20,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'RequestVerificationToken': csrfToken
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(requestData)
             })

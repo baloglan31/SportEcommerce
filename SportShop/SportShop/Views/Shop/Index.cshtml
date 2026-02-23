@@ -39,8 +39,16 @@
                                     <img class="card-img rounded-0 img-fluid" src="@(product.MainImageUrl ?? "/assets/img/no-image.png")" style="height: 250px; object-fit: cover;">
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
-                                            <li><a class="btn btn-success text-white mt-2" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
+                                            <li>
+                                                <a class="btn btn-success text-white mt-2" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="btn btn-success text-white mt-2 btn-add-to-cart" data-product-id="@product.Id">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
