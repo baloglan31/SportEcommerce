@@ -53,6 +53,30 @@ namespace SportShop.Controllers
             return Json(new { success = true, message = "Məhsul səbətə əlavə edildi!", cartCount = totalItems });
         }
 
+       
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var cart = GetCartItems();
+            return View(cart);
+        }
+
+
+        [HttpPost]
+        public IActionResult RemoveFromCart(int productId)
+        {
+            var cart = GetCartItems();
+            var itemToRemove = cart.FirstOrDefault(c => c.ProductId == productId);
+
+            if (itemToRemove != null)
+            {
+                cart.Remove(itemToRemove);
+                SaveCartItems(cart);
+            }
+
+            return RedirectToAction("Index");
+        }
+
         private List<CartItemVM> GetCartItems()
         {
             var sessionCart = HttpContext.Session.GetString("Cart");
