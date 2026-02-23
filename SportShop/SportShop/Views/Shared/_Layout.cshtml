@@ -1,4 +1,4 @@
-﻿@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+﻿
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +18,24 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="~/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
 
 <body>
+    @{
+        int totalCartCount = 0;
+        var cartJson = Context.Session.GetString("Cart");
+
+        if (!string.IsNullOrEmpty(cartJson))
+        {
+            var cartItems = JsonSerializer.Deserialize<List<CartItemVM>>(cartJson);
+            if (cartItems != null)
+            {
+                totalCartCount = cartItems.Sum(c => c.Quantity);
+            }
+        }
+    }
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -59,7 +73,7 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span id="cart-counter" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
+                        <span id="cart-counter" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">@totalCartCount</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
@@ -175,6 +189,7 @@
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/js/templatemo.js"></script>
     <script src="~/assets/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- End Script -->
 </body>
 
