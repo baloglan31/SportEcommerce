@@ -89,5 +89,40 @@ namespace SportShop.Controllers
         {
             HttpContext.Session.SetString("Cart", JsonSerializer.Serialize(cart));
         }
+
+        [HttpPost]
+        public IActionResult UpdateQuantity([FromBody] UpdateQuantityRequest request)
+        {
+            var cart = GetCartItems();
+            var item = cart.FirstOrDefault(c => c.ProductId == request.ProductId);
+
+            if (item != null)
+            {
+                item.Quantity += request.Change;
+
+                if (item.Quantity <= 0)
+                {
+                    cart.Remove(item);
+                }
+
+                SaveCartItems(cart);
+            }
+
+
+            int totalItems = cart.Sum(c => c.Quantity);
+            decimal cartTotal = cart.Sum(c => c.TotalPrice);
+            decimal itemTotal = item != null ? item.TotalPrice : 0;
+            int currentQuantity = item != null ? item.Quantity : 0;
+
+
+            return Json(new
+            {
+                success = true,
+                cartCount = totalItems,
+                itemTotal = itemTotal.ToString("C"), 
+                cartTotal = cartTotal.ToString("C"),
+                currentQuantity = currentQuantity
+            });
+        }
     }
 }
