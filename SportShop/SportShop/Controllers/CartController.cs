@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
+using SportShop.Models;
 using SportShop.ViewModels;
 using System.Text.Json;
 
@@ -123,6 +124,66 @@ namespace SportShop.Controllers
                 cartTotal = cartTotal.ToString("C"),
                 currentQuantity = currentQuantity
             });
+        }
+
+        [HttpGet]
+        public IActionResult Checkout()
+        {
+            var cart = GetCartItems();
+
+
+            if (cart.Count == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var vm = new CheckoutVM
+            {
+                CartItems = cart,
+                CartTotal = cart.Sum(c => c.TotalPrice)
+            };
+
+            return View(vm);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(CheckoutVM model)
+        {
+            var cart = GetCartItems();
+
+            if (cart.Count == 0) return RedirectToAction("Index");
+
+
+            var order = new Order
+            {
+                FullName = model.FullName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                OrderDate = DateTime.Now,
+                TotalAmount = cart.Sum(c => c.TotalPrice),
+                OrderItems = cart.Select(c => new OrderItem
+                {
+                    ProductId = c.ProductId,
+                    Price = c.Price,
+                    Quantity = c.Quantity
+                }).ToList()
+            };
+
+
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            HttpContext.Session.Remove("Cart");
+
+            return RedirectToAction("Success");
+        }
+
+
+        public IActionResult Success()
+        {
+            return View();
         }
     }
 }

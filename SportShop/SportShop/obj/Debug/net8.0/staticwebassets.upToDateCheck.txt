@@ -58,6 +58,7 @@ wwwroot\assets\img\shop_11.jpg
 wwwroot\assets\img\sliders\3ad1658f-5c3b-4781-b733-f28a49e4bc11_images (1).jpg
 wwwroot\assets\img\sliders\d1dc4d6c-427e-48c6-b231-bd353d4cda0a_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
 wwwroot\assets\js\bootstrap.bundle.min.js
+wwwroot\assets\js\custom.js
 wwwroot\assets\js\jquery-1.11.0.min.js
 wwwroot\assets\js\jquery-migrate-1.2.1.min.js
 wwwroot\assets\js\slick.min.js
@@ -84,4 +85,3 @@ wwwroot\assets\webfonts\slick.ttf
 wwwroot\assets\webfonts\slick.woff
 wwwroot\images\products\8ff301ac-9447-450f-8415-b6b14cb42679_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
 wwwroot\images\products\f7a8758b-8e0b-40f4-b67f-d0fc71284b15_Без названия (5).jpg
-wwwroot\assets\js\custom.js

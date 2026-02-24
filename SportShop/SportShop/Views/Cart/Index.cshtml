@@ -92,8 +92,8 @@
                                 <strong class="h5 text-danger" id="cart-summary-total">@Model.Sum(x => x.TotalPrice).ToString("C")</strong>
                             </div>
 
-                            <a href="#" class="btn btn-success btn-lg w-100 mb-2">Sifarişi Təsdiqlə</a>
-                            <a href="/Shop/Index" class="btn btn-outline-dark w-100">Alış-verişə Davam Et</a>
+                            <a asp-controller="Cart" asp-action="Checkout" class="btn btn-success btn-lg w-100 mb-2">Sifarişi Rəsmiləşdir</a>
+                            <a asp-controller="Shop" asp-action="Index" class="btn btn-outline-dark w-100">Alış-verişə Davam Et</a>
                         </div>
                     </div>
                 </div>

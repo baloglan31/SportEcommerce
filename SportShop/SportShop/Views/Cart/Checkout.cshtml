@@ -1,0 +1,67 @@
+﻿@model CheckoutVM
+@{
+    ViewData["Title"] = "Sifarişi Rəsmiləşdir";
+}
+
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="mb-4">Sifarişi Rəsmiləşdir</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Çatdırılma Məlumatları</h4>
+                        <form asp-controller="Cart" asp-action="Checkout" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Ad və Soyad</label>
+                                <input asp-for="FullName" class="form-control" required placeholder="Məs: Əli Əliyev" />
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" required placeholder="adiniz@mail.com" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Əlaqə Nömrəsi</label>
+                                    <input asp-for="PhoneNumber" class="form-control" required placeholder="050-000-00-00" />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Çatdırılma Ünvanı</label>
+                                <textarea asp-for="Address" class="form-control" rows="3" required placeholder="Şəhər, Küçə, Bina, Mənzil..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Sifarişi Təsdiqlə və Bitir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Səbətiniz</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <li class="list-group-item d-flex justify-content-between lh-sm py-3">
+                                    <div>
+                                        <h6 class="my-0">@item.ProductName</h6>
+                                        <small class="text-muted">Say: @item.Quantity</small>
+                                    </div>
+                                    <span class="text-muted">@item.TotalPrice.ToString("C")</span>
+                                </li>
+                            }
+                            <li class="list-group-item d-flex justify-content-between bg-light py-3">
+                                <span class="fw-bold h5 mb-0">Cəmi (AZN)</span>
+                                <strong class="text-danger h5 mb-0">@Model.CartTotal.ToString("C")</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
