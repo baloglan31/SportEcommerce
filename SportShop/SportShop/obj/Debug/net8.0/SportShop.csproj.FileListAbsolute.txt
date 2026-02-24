@@ -263,3 +263,6 @@ C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\ru\Micros
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\obj\Debug\net8.0\SportShop.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll

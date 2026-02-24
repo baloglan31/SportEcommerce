@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.ViewModels;
 using SportShop.ViewModels.ProductVMs;
+using SportShop.ViewModels.ShopVM;
 
 namespace SportShop.Controllers
 {

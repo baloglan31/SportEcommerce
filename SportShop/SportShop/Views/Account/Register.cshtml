@@ -1,0 +1,65 @@
+﻿
+@model RegisterVM
+
+@{
+    ViewData["Title"] = "Qeydiyyatdan Keç";
+}
+
+<section class="bg-light py-5 min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-sm border-0 rounded-3">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold text-success">Yeni Hesab Yarat</h2>
+                        </div>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3 fw-bold"></div>
+
+                        <form asp-controller="Account" asp-action="Register" method="post">
+
+                            <div class="mb-3">
+                                <label asp-for="FullName" class="form-label">Ad və Soyad</label>
+                                <input asp-for="FullName" class="form-control form-control-lg" placeholder="Məs: Əli Əliyev" />
+                                <span asp-validation-for="FullName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="UserName" class="form-label">İstifadəçi Adı (Username)</label>
+                                <input asp-for="UserName" class="form-control form-control-lg" placeholder="Məs: ali_aliyev99" />
+                                <span asp-validation-for="UserName" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Email Ünvanı</label>
+                                <input asp-for="Email" class="form-control form-control-lg" placeholder="adiniz@mail.com" />
+                                <span asp-validation-for="Email" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">Şifrə</label>
+                                <input asp-for="Password" class="form-control form-control-lg" placeholder="••••••••" />
+                                <span asp-validation-for="Password" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="ConfirmPassword" class="form-label">Şifrənin Təkrarı</label>
+                                <input asp-for="ConfirmPassword" class="form-control form-control-lg" placeholder="••••••••" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-lg">Qeydiyyatdan Keç</button>
+                            </div>
+                        </form>
+
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Artıq hesabınız var? <a asp-controller="Account" asp-action="Login" class="text-success text-decoration-none fw-bold">Giriş edin</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

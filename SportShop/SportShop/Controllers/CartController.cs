@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
-using SportShop.ViewModels;
+using SportShop.ViewModels.CartVMs;
 using System.Text.Json;
 
 namespace SportShop.Controllers
@@ -10,10 +12,13 @@ namespace SportShop.Controllers
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager; 
 
-        public CartController(ApplicationDbContext context)
+        
+        public CartController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager; 
         }
 
         [HttpPost]
@@ -125,38 +130,43 @@ namespace SportShop.Controllers
                 currentQuantity = currentQuantity
             });
         }
-
+        [Authorize]
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout() 
         {
             var cart = GetCartItems();
+            if (cart.Count == 0) return RedirectToAction("Index");
 
-
-            if (cart.Count == 0)
-            {
-                return RedirectToAction("Index");
-            }
+            
+            var user = await _userManager.GetUserAsync(User);
 
             var vm = new CheckoutVM
             {
                 CartItems = cart,
-                CartTotal = cart.Sum(c => c.TotalPrice)
+                CartTotal = cart.Sum(c => c.TotalPrice),
+
+                
+                FullName = user?.FullName,
+                Email = user?.Email,
+                Address = user?.Address 
             };
 
             return View(vm);
         }
 
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Checkout(CheckoutVM model)
         {
             var cart = GetCartItems();
-
             if (cart.Count == 0) return RedirectToAction("Index");
 
+           
+            var user = await _userManager.GetUserAsync(User);
 
             var order = new Order
             {
+                AppUserId = user?.Id, 
                 FullName = model.FullName,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber,
@@ -170,7 +180,6 @@ namespace SportShop.Controllers
                     Quantity = c.Quantity
                 }).ToList()
             };
-
 
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();

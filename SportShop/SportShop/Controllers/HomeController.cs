@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
 using SportShop.ViewModels;
+using SportShop.ViewModels.HomeVM;
 using SportShop.ViewModels.ProductVMs;
 using System.Diagnostics;
 

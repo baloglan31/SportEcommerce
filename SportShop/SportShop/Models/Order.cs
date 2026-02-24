@@ -10,6 +10,9 @@
         public DateTime OrderDate { get; set; }
         public decimal TotalAmount { get; set; }
 
+        public string? AppUserId { get; set; }
+        public AppUser? AppUser { get; set; }
+
         //sifarisin icindeki mehsullar
         public List<OrderItem> OrderItems { get; set; }
     }

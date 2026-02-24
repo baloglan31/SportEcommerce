@@ -8,9 +8,8 @@ namespace SportShop.Models
         [StringLength(100)]
         public string FullName { get; set; }
 
-        public string? Address { get; set; } // fake address
+        public string? Address { get; set; }
 
-        // reyler
         public List<Review> Reviews { get; set; }
     }
 }

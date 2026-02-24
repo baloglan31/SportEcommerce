@@ -75,9 +75,31 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span id="cart-counter" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">@totalCartCount</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="nav-item dropdown d-inline-block">
+                            <a class="nav-icon position-relative text-decoration-none dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-fw fa-user text-success mr-1"></i>
+                                <span class="text-dark fw-bold">@User.Identity.Name</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Orders"><i class="fas fa-shopping-bag me-2"></i>Sifarişlərim</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item text-danger fw-bold" asp-controller="Account" asp-action="Logout">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Çıxış
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <a class="nav-icon position-relative text-decoration-none" asp-controller="Account" asp-action="Login" title="Giriş / Qeydiyyat">
+                            <i class="fa fa-fw fa-user text-dark mr-1"></i>
+                            <span class="text-dark small">Giriş</span>
+                        </a>
+                    }
                 </div>
             </div>
 
