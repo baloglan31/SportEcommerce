@@ -4,22 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
+using SportShop.Services;
 using SportShop.ViewModels.AccountVMs;
 
 namespace SportShop.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ApplicationDbContext context, EmailService emailService) : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly SignInManager<AppUser> _signInManager;
-        private readonly ApplicationDbContext _context; 
-
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ApplicationDbContext context)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context; 
-        }
+        private readonly UserManager<AppUser> _userManager = userManager;
+        private readonly SignInManager<AppUser> _signInManager = signInManager;
+        private readonly ApplicationDbContext _context = context;
+        private readonly EmailService _emailService = emailService;
 
         [HttpGet]
         public IActionResult Register()
@@ -32,7 +27,7 @@ namespace SportShop.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-          
+
             AppUser user = new AppUser
             {
                 FullName = model.FullName,
@@ -44,8 +39,18 @@ namespace SportShop.Controllers
 
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
+               
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                
+                var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+
+                
+                string emailBody = $"<h3>Xoş gəlmisiniz!</h3><p>Hesabınızı aktivləşdirmək üçün zəhmət olmasa <a href='{confirmationLink}'>BU LİNKƏ KLİKLƏYİN</a>.</p>";
+                await _emailService.SendEmailAsync(user.Email, "SportShop - Hesabın Təsdiqi", emailBody);
+
+                
+                return RedirectToAction("CheckEmail");
             }
 
             foreach (var error in result.Errors)
@@ -80,7 +85,7 @@ namespace SportShop.Controllers
 
             if (result.Succeeded)
             {
-                
+
                 if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                 {
                     return Redirect(model.ReturnUrl);
@@ -103,19 +108,43 @@ namespace SportShop.Controllers
         [HttpGet]
         public async Task<IActionResult> Orders()
         {
-            
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return RedirectToAction("Login");
 
-            
+
             var myOrders = await _context.Orders
                 .Include(o => o.OrderItems)
-                .ThenInclude(i => i.Product) 
+                .ThenInclude(i => i.Product)
                 .Where(o => o.AppUserId == user.Id)
-                .OrderByDescending(o => o.OrderDate) 
+                .OrderByDescending(o => o.OrderDate)
                 .ToListAsync();
 
             return View(myOrders);
+        }
+        
+        public IActionResult CheckEmail()
+        {
+            return View();
+        }
+
+      
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null) return RedirectToAction("Index", "Home");
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound("İstifadəçi tapılmadı");
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+
+            if (result.Succeeded)
+            {
+                return View("ConfirmEmailSuccess");
+            }
+
+            return Content("Təsdiqləmə zamanı xəta baş verdi. Linkin vaxtı keçmiş ola bilər.");
         }
     }
 }

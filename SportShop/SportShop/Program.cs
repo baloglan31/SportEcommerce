@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
+using SportShop.Services;
+using SportShop.Settings;
 
 namespace SportShop
 {
@@ -14,6 +16,13 @@ namespace SportShop
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+          
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddTransient<EmailService>();
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromDays(1);
@@ -21,22 +30,15 @@ namespace SportShop
                 options.Cookie.IsEssential = true;
             });
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+            
             builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
             {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
+                options.SignIn.RequireConfirmedEmail = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                options.SignIn.RequireConfirmedAccount = true; 
             })
-.AddEntityFrameworkStores<ApplicationDbContext>()
-.AddDefaultTokenProviders();
-
-
-            
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
 
             var app = builder.Build();
 
@@ -44,7 +46,6 @@ namespace SportShop
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -53,12 +54,12 @@ namespace SportShop
 
             app.UseRouting();
             app.UseSession();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
-            name: "areas",
-            pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+                name: "areas",
+                pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

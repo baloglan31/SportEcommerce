@@ -3,48 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\account\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\account\\orders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\baloglan\\AppData\\Roaming\\Microsoft\\UserSecrets\\6375ecf6-398e-4f5a-b674-1b3578b76e89\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\settings\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\settings\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\account\\confirmemailsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\account\\confirmemailsuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\account\\checkemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\account\\checkemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\viewmodels\\accountvms\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\viewmodels\\accountvms\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\viewmodels\\accountvms\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\viewmodels\\accountvms\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|c:\\users\\baloglan\\desktop\\c# task\\sportshop\\sportshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8993B97B-648A-4321-B4D3-0398BD0F033D}|SportShop\\SportShop.csproj|solutionrelative:sportshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +37,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,143 +45,86 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Orders.cshtml",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Orders.cshtml",
-              "RelativeDocumentMoniker": "SportShop\\Views\\Account\\Orders.cshtml",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Orders.cshtml*",
-              "RelativeToolTip": "SportShop\\Views\\Account\\Orders.cshtml*",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:56:13.207Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "SportShop\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Models\\Order.cs",
-              "RelativeToolTip": "SportShop\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T17:49:57.497Z",
-              "EditorCaption": ""
+              "DocumentIndex": 2,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\baloglan\\AppData\\Roaming\\Microsoft\\UserSecrets\\6375ecf6-398e-4f5a-b674-1b3578b76e89\\secrets.json",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\6375ecf6-398e-4f5a-b674-1b3578b76e89\\secrets.json",
+              "ToolTip": "C:\\Users\\baloglan\\AppData\\Roaming\\Microsoft\\UserSecrets\\6375ecf6-398e-4f5a-b674-1b3578b76e89\\secrets.json",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\6375ecf6-398e-4f5a-b674-1b3578b76e89\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-26T15:49:07.533Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "SportShop\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\CartController.cs",
-              "RelativeToolTip": "SportShop\\Controllers\\CartController.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAiwLwAAAAvAAAAAAAAAA==",
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Settings\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "SportShop\\Settings\\EmailSettings.cs",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Settings\\EmailSettings.cs",
+              "RelativeToolTip": "SportShop\\Settings\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T17:45:46.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-26T15:47:56.165Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "SportShop\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "SportShop\\Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAIwFgAAAB+AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ConfirmEmailSuccess.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\ConfirmEmailSuccess.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Views\\Account\\ConfirmEmailSuccess.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\ConfirmEmailSuccess.cshtml",
+              "RelativeToolTip": "SportShop\\Views\\Account\\ConfirmEmailSuccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:39:56.279Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-26T15:47:11.669Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "SportShop\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "SportShop\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAuAAAAAAAAAA==",
+              "Title": "CheckEmail.cshtml",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\CheckEmail.cshtml",
+              "RelativeDocumentMoniker": "SportShop\\Views\\Account\\CheckEmail.cshtml",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\CheckEmail.cshtml",
+              "RelativeToolTip": "SportShop\\Views\\Account\\CheckEmail.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:38:43.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-26T15:46:48.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "SportShop\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "SportShop\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:38:16.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "SportShop\\Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Views\\Account\\Register.cshtml",
-              "RelativeToolTip": "SportShop\\Views\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:38:00.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "SportShop\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\AccountController.cs*",
-              "RelativeToolTip": "SportShop\\Controllers\\AccountController.cs*",
-              "ViewState": "AgIAAFEAAAAAAAAAAADwv2cAAAAsAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "SportShop\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Services\\EmailService.cs",
+              "RelativeToolTip": "SportShop\\Services\\EmailService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T17:31:41.707Z",
+              "WhenOpened": "2026-02-26T15:42:32.288Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "LoginVM.cs",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\AccountVMs\\LoginVM.cs",
-              "RelativeDocumentMoniker": "SportShop\\ViewModels\\AccountVMs\\LoginVM.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\AccountVMs\\LoginVM.cs",
-              "RelativeToolTip": "SportShop\\ViewModels\\AccountVMs\\LoginVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SportShop\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SportShop\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAiwIIAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T17:30:53.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T17:31:41.707Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RegisterVM.cs",
-              "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\AccountVMs\\RegisterVM.cs",
-              "RelativeDocumentMoniker": "SportShop\\ViewModels\\AccountVMs\\RegisterVM.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\ViewModels\\AccountVMs\\RegisterVM.cs",
-              "RelativeToolTip": "SportShop\\ViewModels\\AccountVMs\\RegisterVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T17:30:36.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Program.cs",
               "RelativeDocumentMoniker": "SportShop\\Program.cs",
-              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Program.cs",
-              "RelativeToolTip": "SportShop\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBIAAAA7AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\Program.cs*",
+              "RelativeToolTip": "SportShop\\Program.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAIA1wBIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-17T17:10:16.509Z",
               "EditorCaption": ""
