@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using SportShop.Data;
 using SportShop.Models;
 using SportShop.Services;
@@ -145,6 +146,81 @@ namespace SportShop.Controllers
             }
 
             return Content("Təsdiqləmə zamanı xəta baş verdi. Linkin vaxtı keçmiş ola bilər.");
+        }
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+            {
+                return RedirectToAction("ForgotPasswordConfirmation");
+            }
+
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+
+            var callbackUrl = Url.Action("ResetPassword", "Account", new { email = model.Email, token }, Request.Scheme);
+
+            
+            string body = $"<h3>Şifrə Yeniləmə</h3><p>Hesabınızın şifrəsini yeniləmək üçün zəhmət olmasa <a href='{callbackUrl}'>BU LİNKƏ KLİKLƏYİN</a>.</p>";
+            await _emailService.SendEmailAsync(model.Email, "SportShop - Şifrənin Sıfırlanması", body);
+
+            return RedirectToAction("ForgotPasswordConfirmation");
+        }
+
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+       
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (token == null || email == null) return RedirectToAction("Index", "Home");
+
+            var model = new ResetPasswordVM { Token = token, Email = email };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null) return RedirectToAction("ResetPasswordConfirmation");
+
+            
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("ResetPasswordConfirmation");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View(model);
+        }
+
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
         }
     }
 }
