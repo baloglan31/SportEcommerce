@@ -52,24 +52,6 @@
         <i class="fas fa-chevron-right"></i>
     </a>
 </div>
-<section class="container py-5">
-    <div class="row text-center pt-3">
-        <div class="col-lg-6 m-auto">
-            <h1 class="h1">Ayın Kateqoriyaları</h1>
-            <p>Ən çox satılan və maraq görən məhsul kateqoriyalarımız.</p>
-        </div>
-    </div>
-    <div class="row">
-        @foreach (var category in Model.Categories)
-        {
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="~/assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">@category.Name</h5>
-                <p class="text-center"><a href="#" class="btn btn-success">Məhsullara Bax</a></p>
-            </div>
-        }
-    </div>
-</section>
 <section class="bg-light">
     <div class="container py-5">
         <div class="row text-center py-3">

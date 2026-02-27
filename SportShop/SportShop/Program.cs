@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
@@ -9,7 +9,7 @@ namespace SportShop
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -64,6 +64,22 @@ namespace SportShop
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var configuration = app.Configuration; 
+
+                try
+                {
+                    
+                    await DbInitializer.SeedRolesAndAdminAsync(services, configuration);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Rol yaradılarkən xəta baş verdi: {ex.Message}");
+                }
+            }
 
             app.Run();
         }

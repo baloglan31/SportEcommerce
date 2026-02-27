@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.ViewModels.DashboardVM;
@@ -7,6 +8,7 @@ using SportShop.ViewModels.ProductVMs;
 namespace SportShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
 

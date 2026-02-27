@@ -1,12 +1,10 @@
-﻿
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="az">
 
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
+    <title>Baloğlan Sport - İdman Malları Mağazası</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
     <link rel="apple-touch-icon" href="~/assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.ico">
@@ -15,11 +13,9 @@
     <link rel="stylesheet" href="~/assets/css/templatemo.css">
     <link rel="stylesheet" href="~/assets/css/custom.css">
 
-    <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="~/assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
 </head>
 
 <body>
@@ -29,19 +25,19 @@
 
         if (!string.IsNullOrEmpty(cartJson))
         {
-            var cartItems = JsonSerializer.Deserialize<List<CartItemVM>>(cartJson);
+            var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CartItemVM>>(cartJson);
             if (cartItems != null)
             {
                 totalCartCount = cartItems.Sum(c => c.Quantity);
             }
         }
     }
-    <!-- Header -->
+
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Baloğlan Sport 
+            <a class="navbar-brand text-success logo h1 align-self-center" asp-controller="Home" asp-action="Index">
+                Baloğlan Sport
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,29 +48,33 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex mx-lg-auto gap-2">
                         <li class="nav-item me-0">
-                            <a class="nav-link px-2" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link px-2" asp-controller="Home" asp-action="Index">Ana Səhifə</a>
                         </li>
                         <li class="nav-item me-0">
-                            <a class="nav-link px-2" asp-controller="Shop" asp-action="Index">Shop</a>
+                            <a class="nav-link px-2" asp-controller="Shop" asp-action="Index">Mağaza</a>
                         </li>
                     </ul>
                 </div>
+
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Axtar ...">
                             <div class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
                             </div>
                         </div>
                     </div>
+
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
+
                     <a class="nav-icon position-relative text-decoration-none" asp-controller="Cart" asp-action="Index">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span id="cart-counter" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">@totalCartCount</span>
                     </a>
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         <div class="nav-item dropdown d-inline-block">
@@ -83,6 +83,16 @@
                                 <span class="text-dark fw-bold">@User.Identity.Name</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2" aria-labelledby="userDropdown">
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a class="dropdown-item text-primary fw-bold" asp-area="Admin" asp-controller="Order" asp-action="Index">
+                                            <i class="fas fa-user-shield me-2"></i>Admin Panel
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                }
                                 <li><a class="dropdown-item" asp-controller="Account" asp-action="Orders"><i class="fas fa-shopping-bag me-2"></i>Sifarişlərim</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
@@ -102,19 +112,16 @@
                     }
                 </div>
             </div>
-
         </div>
     </nav>
-    <!-- Close Header -->
-    <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form asp-controller="Shop" asp-action="Index" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="searchTerm" placeholder="Məhsul axtar...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -122,51 +129,48 @@
             </form>
         </div>
     </div>
-            @RenderBody()
-    <!-- Start Footer -->
+
+    @RenderBody()
+
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Baloğlan Sport</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            Bakı şəhəri, Azərbaycan
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:012-345-6789">012-345-6789</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@baloglansport.com">info@baloglansport.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Kateqoriyalar</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Shop" asp-action="Index">İdman Geyimləri</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Shop" asp-action="Index">Ayaqqabılar</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Shop" asp-action="Index">İdman Alətləri</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Shop" asp-action="Index">Aksesuarlar</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Sürətli Keçidlər</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Home" asp-action="Index">Ana Səhifə</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Shop" asp-action="Index">Mağaza</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Account" asp-action="Login">Giriş / Qeydiyyat</a></li>
+                        <li><a class="text-decoration-none" asp-controller="Cart" asp-action="Index">Səbət</a></li>
                     </ul>
                 </div>
 
@@ -184,36 +188,17 @@
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
                         </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
                     </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
                 </div>
             </div>
         </div>
-
-
     </footer>
-    <!-- End Footer -->
-    <!-- Start Script -->
     <script src="~/assets/js/jquery-1.11.0.min.js"></script>
     <script src="~/assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/js/templatemo.js"></script>
     <script src="~/assets/js/custom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <!-- End Script -->
 </body>
 
 </html>
-
