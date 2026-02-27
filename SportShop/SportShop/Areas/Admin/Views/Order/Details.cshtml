@@ -1,0 +1,70 @@
+﻿@model Order
+
+@{
+    ViewData["Title"] = $"Sifariş #{Model.Id}";
+}
+
+<div class="container-fluid py-4">
+    <div class="mb-4 d-flex justify-content-between align-items-center">
+        <h2 class="fw-bold"><i class="fas fa-file-invoice text-info me-2"></i>Sifariş Detalları (#@Model.Id)</h2>
+        <a asp-action="Index" class="btn btn-outline-dark"><i class="fas fa-arrow-left me-1"></i> Geriyə Qayıt</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-dark text-white fw-bold">
+                    <i class="fas fa-user me-2"></i> Çatdırılma Məlumatları
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-0"><strong>Alıcı:</strong> @Model.FullName</li>
+                        <li class="list-group-item px-0"><strong>Email:</strong> @Model.Email</li>
+                        <li class="list-group-item px-0"><strong>Telefon:</strong> @Model.PhoneNumber</li>
+                        <li class="list-group-item px-0"><strong>Ünvan:</strong> @Model.Address</li>
+                        <li class="list-group-item px-0"><strong>Tarix:</strong> @Model.OrderDate.ToString("dd MMM yyyy, HH:mm")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-dark text-white fw-bold">
+                    <i class="fas fa-box-open me-2"></i> Alınan Məhsullar
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0 text-center">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-start ps-3">Məhsulun Adı</th>
+                                    <th>Qiymət</th>
+                                    <th>Say</th>
+                                    <th>Cəmi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderItems)
+                                {
+                                    <tr>
+                                        <td class="text-start ps-3 fw-bold">@item.Product.Name</td>
+                                        <td>@item.Price.ToString("C")</td>
+                                        <td>@item.Quantity</td>
+                                        <td class="text-success fw-bold">@((item.Price * item.Quantity).ToString("C"))</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot class="table-light">
+                                <tr>
+                                    <td colspan="3" class="text-end fw-bold">YEKUN MƏBLƏĞ:</td>
+                                    <td class="text-success fw-bold fs-5">@Model.TotalAmount.ToString("C")</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

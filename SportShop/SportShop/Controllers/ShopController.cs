@@ -16,7 +16,8 @@ namespace SportShop.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? categoryId)
+        [HttpGet]
+        public async Task<IActionResult> Index(int? categoryId, string? searchTerm, string? sortBy)
         {
             var categories = await _context.Categories.ToListAsync();
 
@@ -25,28 +26,61 @@ namespace SportShop.Controllers
                 .Include(p => p.Images)
                 .AsQueryable();
 
-
-            if (categoryId != null)
+            
+            if (categoryId != null && categoryId > 0)
             {
                 productsQuery = productsQuery.Where(p => p.CategoryId == categoryId);
             }
 
+            
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+               
+                productsQuery = productsQuery.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm));
+            }
+
+            
+            switch (sortBy)
+            {
+                case "price_asc":
+                    productsQuery = productsQuery.OrderBy(p => p.Price); 
+                    break;
+                case "price_desc":
+                    productsQuery = productsQuery.OrderByDescending(p => p.Price);
+                    break;
+                case "name_desc":
+                    productsQuery = productsQuery.OrderByDescending(p => p.Name); 
+                    break;
+                case "name_asc":
+                    productsQuery = productsQuery.OrderBy(p => p.Name); 
+                    break;
+                default:
+                    productsQuery = productsQuery.OrderByDescending(p => p.Id); 
+                    break;
+            }
+
+
             var products = await productsQuery
-                .OrderByDescending(p => p.Id)
-                .Select(p => new ProductListVM
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    CategoryName = p.Category.Name,
-                    MainImageUrl = p.Images.FirstOrDefault(i => i.IsMain).Url
-                }).ToListAsync();
+        .Select(p => new ProductListVM
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Price = p.Price,
+            CategoryName = p.Category.Name,
+
+            
+            MainImageUrl = p.Images.Where(i => i.IsMain).Select(i => i.Url).FirstOrDefault() ?? "default.jpg"
+
+        }).ToListAsync();
+
 
             var model = new ShopVM
             {
                 Categories = categories,
                 Products = products,
-                SelectedCategoryId = categoryId
+                SelectedCategoryId = categoryId,
+                SearchTerm = searchTerm,
+                SortBy = sortBy
             };
 
             return View(model);

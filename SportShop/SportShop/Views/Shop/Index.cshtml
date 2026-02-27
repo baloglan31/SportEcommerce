@@ -1,83 +1,91 @@
-﻿@using SportShop.ViewModels.ShopVM
-@model ShopVM
+﻿@model ShopVM
 
 @{
     ViewData["Title"] = "Mağaza";
 }
 
 <div class="container py-5">
-    <div class="row">
 
-        <div class="col-lg-3">
-            <h1 class="h2 pb-4">Kateqoriyalar</h1>
-            <ul class="list-unstyled templatemo-accordion">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none @(Model.SelectedCategoryId == null ? "text-success fw-bold" : "")" asp-controller="Shop" asp-action="Index" asp-route-categoryId="">
-                        Bütün Məhsullar
-                    </a>
-                </li>
-                @foreach (var cat in Model.Categories)
-                {
-                    <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none @(Model.SelectedCategoryId == cat.Id ? "text-success fw-bold" : "")"
-                           asp-controller="Shop" asp-action="Index" asp-route-categoryId="@cat.Id">
-                            @cat.Name
-                        </a>
-                    </li>
-                }
-            </ul>
-        </div>
+    <div class="card shadow-sm border-0 mb-5 bg-light">
+        <div class="card-body p-4">
+            <form method="get" asp-controller="Shop" asp-action="Index" class="row g-3 align-items-end">
 
-        <div class="col-lg-9">
-            <div class="row">
-                @if (Model.Products.Any())
-                {
-                    @foreach (var product in Model.Products)
-                    {
-                        <div class="col-md-4">
-                            <div class="card mb-4 product-wap rounded-0 shadow-sm">
-                                <div class="card rounded-0">
-                                    <img class="card-img rounded-0 img-fluid" src="@(product.MainImageUrl ?? "/assets/img/no-image.png")" style="height: 250px; object-fit: cover;">
-                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a class="btn btn-success text-white mt-2" asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="btn btn-success text-white mt-2 btn-add-to-cart" data-product-id="@product.Id">
-                                                    <i class="fas fa-cart-plus"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <a asp-controller="Shop" asp-action="Details" asp-route-id="@product.Id" class="h3 text-decoration-none fw-bold">@product.Name</a>
-                                    <p class="mb-1 text-muted small">@product.CategoryName</p>
-                                    <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                        <li>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-warning fa fa-star"></i>
-                                            <i class="text-muted fa fa-star"></i>
-                                            <i class="text-muted fa fa-star"></i>
-                                        </li>
-                                    </ul>
-                                    <p class="text-center mb-0 text-success fw-bold fs-5">@product.Price.ToString("C2")</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <div class="col-12 text-center py-5">
-                        <h4 class="text-muted">Bu kateqoriyada məhsul tapılmadı.</h4>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold text-muted small">Axtarış</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Məhsul axtar..." />
                     </div>
-                }
-            </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold text-muted small">Kateqoriya</label>
+                    <select name="categoryId" class="form-select">
+                        <option value="">Bütün Kateqoriyalar</option>
+                        @foreach (var cat in Model.Categories)
+                        {
+                            if (Model.SelectedCategoryId == cat.Id)
+                            {
+                                <option value="@cat.Id" selected>@cat.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold text-muted small">Sıralama</label>
+                    <select name="sortBy" class="form-select">
+                        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy) ? "selected" : null)">Yenilər əvvəlcə</option>
+                        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? "selected" : null)">A-dan Z-yə</option>
+                        <option value="name_desc" selected="@(Model.SortBy == "name_desc" ? "selected" : null)">Z-dən A-ya</option>
+                        <option value="price_asc" selected="@(Model.SortBy == "price_asc" ? "selected" : null)">Ucuzdan Bahaya</option>
+                        <option value="price_desc" selected="@(Model.SortBy == "price_desc" ? "selected" : null)">Bahadan Ucuza</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2 d-grid">
+                    <button type="submit" class="btn btn-success">
+                        Tətbiq Et
+                    </button>
+                </div>
+
+            </form>
         </div>
+    </div>
+
+    <div class="row g-4">
+        @if (Model.Products.Any())
+        {
+            @foreach (var item in Model.Products)
+            {
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0 product-card">
+                        <img src="@item.MainImageUrl" class="card-img-top p-3" alt="@item.Name" style="height: 250px; object-fit: contain;">
+
+                        <div class="card-body text-center">
+                            <span class="badge bg-light text-dark mb-2">@item.CategoryName</span>
+
+                            <h5 class="card-title fw-bold text-dark mb-1">@item.Name</h5>
+                            <h6 class="text-success fw-bold fs-5 mt-3">@item.Price.ToString("C")</h6>
+                        </div>
+                        <div class="card-footer bg-white border-0 text-center pb-3">
+                            <a asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark w-100">Ətraflı Bax</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center py-5">
+                <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+                <h3 class="text-muted">Axtarışa uyğun məhsul tapılmadı</h3>
+                <a asp-action="Index" class="btn btn-success mt-3">Sıfırla və Bütün Məhsulları Gör</a>
+            </div>
+        }
     </div>
 </div>
