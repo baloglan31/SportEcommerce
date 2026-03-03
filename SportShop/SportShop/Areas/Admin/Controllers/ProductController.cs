@@ -270,5 +270,48 @@ namespace SportShop.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Edit), new { id = image.ProductId });
         }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+           
+            var product = await _context.Products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+           
+            if (product.Images != null && product.Images.Any())
+            {
+                foreach (var image in product.Images)
+                {
+                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, image.Url.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        try
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                            System.Diagnostics.Debug.WriteLine($"Fayl silinərkən xəta: {ex.Message}");
+                        }
+                    }
+                }
+            }
+
+            
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
+using SportShop.Models;
 using SportShop.ViewModels;
 using SportShop.ViewModels.ProductVMs;
 using SportShop.ViewModels.ShopVM;
+using System.Security.Claims;
 
 namespace SportShop.Controllers
 {
@@ -87,16 +90,50 @@ namespace SportShop.Controllers
         }
 
 
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var product = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Images)
+                .Include(p => p.Reviews) 
+                    .ThenInclude(r => r.AppUser) 
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null) return NotFound();
 
             return View(product);
+        }
+
+        [HttpPost]
+        [Authorize] // qeydiyyatdan kecmis userler ucun
+        public async Task<IActionResult> AddReview(int productId, int rating, string comment)
+        {
+            // datalar yoxlanir
+            if (rating < 1 || rating > 5 || string.IsNullOrWhiteSpace(comment))
+            {
+                TempData["Error"] = "Ulduz seçməli və rəy mətni yazmalısınız.";
+                return RedirectToAction("Details", new { id = productId });
+            }
+
+            // istifadecinin id-si
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Yeni rəy obyekti yaradırıq
+            var newReview = new Review
+            {
+                ProductId = productId,
+                AppUserId = userId,
+                Rating = rating,
+                Comment = comment,
+                CreatedDate = DateTime.Now
+            };
+
+            _context.Reviews.Add(newReview);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Rəyiniz uğurla əlavə edildi!";
+            return RedirectToAction("Details", new { id = productId });
         }
     }
 }

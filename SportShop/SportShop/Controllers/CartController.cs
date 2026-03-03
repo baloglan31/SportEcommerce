@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using SportShop.Data;
 using SportShop.Models;
 using SportShop.ViewModels.CartVMs;
+using Stripe.Checkout;
+using System.Security.Claims;
 using System.Text.Json;
+
+
 
 namespace SportShop.Controllers
 {
@@ -154,45 +158,108 @@ namespace SportShop.Controllers
             return View(vm);
         }
 
-        [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Checkout(CheckoutVM model)
         {
-            var cart = GetCartItems();
-            if (cart.Count == 0) return RedirectToAction("Index");
+            // 1. Səbəti yoxlayırıq (Əgər boşdursa və ya yaddaşdan siliniblərsə, səbət səhifəsinə qaytarırıq)
+            var cartJson = HttpContext.Session.GetString("Cart");
+            if (string.IsNullOrEmpty(cartJson))
+            {
+                return RedirectToAction("Index", "Cart");
+            }
 
-           
-            var user = await _userManager.GetUserAsync(User);
+            var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<CartItemVM>>(cartJson);
 
+            // 2. Sifarişi "Pending" statusu ilə bazaya yazırıq
             var order = new Order
             {
-                AppUserId = user?.Id, 
+                AppUserId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "Anonim",
                 FullName = model.FullName,
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 OrderDate = DateTime.Now,
-                TotalAmount = cart.Sum(c => c.TotalPrice),
-                OrderItems = cart.Select(c => new OrderItem
-                {
-                    ProductId = c.ProductId,
-                    Price = c.Price,
-                    Quantity = c.Quantity
-                }).ToList()
+                OrderStatus = "Pending",
+                TotalAmount = cartItems.Sum(x => x.Price * x.Quantity)
             };
 
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            HttpContext.Session.Remove("Cart");
+            // Sifarişin məhsullarını əlavə edirik
+            foreach (var item in cartItems)
+            {
+                var orderItem = new OrderItem
+                {
+                    ProductId = item.ProductId,
+                    OrderId = order.Id,
+                    Price = item.Price,
+                    Quantity = item.Quantity
+                };
+                _context.OrderItems.Add(orderItem);
+            }
+            await _context.SaveChangesAsync();
 
-            return RedirectToAction("Success");
+            // 3. Stripe Ödəniş Sessiyasının Yaradılması
+            var domain = "https://localhost:7265/"; // Öz işləyən portunuzu burada saxlayın
+
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string> { "card" },
+                LineItems = new List<SessionLineItemOptions>(),
+                Mode = "payment",
+                SuccessUrl = domain + $"Cart/OrderConfirmation?id={order.Id}",
+                CancelUrl = domain + "Cart/Index",
+            };
+
+            foreach (var item in cartItems)
+            {
+                var sessionLineItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        UnitAmount = (long)(item.Price * 100),
+                        Currency = "azn",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = item.ProductName
+                        },
+                    },
+                    Quantity = item.Quantity,
+                };
+                options.LineItems.Add(sessionLineItem);
+            }
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+
+            // 4. Müştərini Stripe səhifəsinə yönləndiririk
+            Response.Headers.Add("Location", session.Url);
+            return new StatusCodeResult(303);
         }
 
 
         public IActionResult Success()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> OrderConfirmation(int id)
+        {
+            var order = await _context.Orders.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (order == null) return NotFound();
+
+            // ÖDƏNİŞ UĞURLUDUR! Statusu dəyişirik:
+            order.OrderStatus = "Approved";
+            await _context.SaveChangesAsync();
+
+            // Səbəti təmizləyirik
+            HttpContext.Session.Remove("Cart");
+
+            return View(id);
         }
     }
 }

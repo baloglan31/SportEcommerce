@@ -4,6 +4,7 @@ using SportShop.Data;
 using SportShop.Models;
 using SportShop.Services;
 using SportShop.Settings;
+using Stripe;
 
 namespace SportShop
 {
@@ -22,6 +23,7 @@ namespace SportShop
 
             builder.Services.AddTransient<EmailService>();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
             builder.Services.AddSession(options =>
             {
@@ -39,6 +41,8 @@ namespace SportShop
             })
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
+
+            
 
             var app = builder.Build();
 
@@ -80,6 +84,8 @@ namespace SportShop
                     Console.WriteLine($"Rol yaradılarkən xəta baş verdi: {ex.Message}");
                 }
             }
+
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
             app.Run();
         }

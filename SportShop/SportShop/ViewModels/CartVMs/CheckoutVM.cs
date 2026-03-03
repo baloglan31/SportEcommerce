@@ -9,5 +9,6 @@
 
         public List<CartItemVM>? CartItems { get; set; }
         public decimal CartTotal { get; set; }
+
     }
 }

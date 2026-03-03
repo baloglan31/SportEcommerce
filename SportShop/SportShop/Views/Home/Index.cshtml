@@ -65,8 +65,8 @@
             {
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                        <a href="/Product/Details/@product.Id">
-                            <img src="@(product.MainImageUrl ?? "/assets/img/no-image.png")" class="card-img-top" alt="@product.Name" style="height: 300px; object-fit: cover;">
+                        <a asp-controller="Shop" asp-action="Deatils" asp-route-id="@product.Id">
+                            <img src="@product.MainImageUrl" class="card-img-top" alt="@product.Name" style="height: 300px; object-fit: cover;">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between mb-2">

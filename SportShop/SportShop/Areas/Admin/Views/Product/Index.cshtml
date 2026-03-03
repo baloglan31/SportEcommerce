@@ -75,9 +75,8 @@
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm ms-1"
-                                                onclick="return confirm('Silməyə əminsiniz?');">
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bu məhsulu silməyə əminsiniz?')">
+                                        <button type="submit" class="btn btn-danger btn-sm">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>

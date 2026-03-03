@@ -5,87 +5,109 @@
 }
 
 <div class="container py-5">
+    <div class="row">
 
-    <div class="card shadow-sm border-0 mb-5 bg-light">
-        <div class="card-body p-4">
-            <form method="get" asp-controller="Shop" asp-action="Index" class="row g-3 align-items-end">
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card shadow-sm border-0 bg-light position-sticky" style="top: 20px;">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4 text-dark">
+                        <i class="fas fa-filter text-success me-2"></i>Filtrlər
+                    </h5>
 
-                <div class="col-md-4">
-                    <label class="form-label fw-bold text-muted small">Axtarış</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
-                        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Məhsul axtar..." />
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label fw-bold text-muted small">Kateqoriya</label>
-                    <select name="categoryId" class="form-select">
-                        <option value="">Bütün Kateqoriyalar</option>
-                        @foreach (var cat in Model.Categories)
-                        {
-                            if (Model.SelectedCategoryId == cat.Id)
-                            {
-                                <option value="@cat.Id" selected>@cat.Name</option>
-                            }
-                            else
-                            {
-                                <option value="@cat.Id">@cat.Name</option>
-                            }
-                        }
-                    </select>
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label fw-bold text-muted small">Sıralama</label>
-                    <select name="sortBy" class="form-select">
-                        <option value="" selected="@(string.IsNullOrEmpty(Model.SortBy) ? "selected" : null)">Yenilər əvvəlcə</option>
-                        <option value="name_asc" selected="@(Model.SortBy == "name_asc" ? "selected" : null)">A-dan Z-yə</option>
-                        <option value="name_desc" selected="@(Model.SortBy == "name_desc" ? "selected" : null)">Z-dən A-ya</option>
-                        <option value="price_asc" selected="@(Model.SortBy == "price_asc" ? "selected" : null)">Ucuzdan Bahaya</option>
-                        <option value="price_desc" selected="@(Model.SortBy == "price_desc" ? "selected" : null)">Bahadan Ucuza</option>
-                    </select>
-                </div>
-
-                <div class="col-md-2 d-grid">
-                    <button type="submit" class="btn btn-success">
-                        Tətbiq Et
-                    </button>
-                </div>
-
-            </form>
-        </div>
-    </div>
-
-    <div class="row g-4">
-        @if (Model.Products.Any())
-        {
-            @foreach (var item in Model.Products)
-            {
-                <div class="col-md-4 col-lg-3">
-                    <div class="card h-100 shadow-sm border-0 product-card">
-                        <img src="@item.MainImageUrl" class="card-img-top p-3" alt="@item.Name" style="height: 250px; object-fit: contain;">
-
-                        <div class="card-body text-center">
-                            <span class="badge bg-light text-dark mb-2">@item.CategoryName</span>
-
-                            <h5 class="card-title fw-bold text-dark mb-1">@item.Name</h5>
-                            <h6 class="text-success fw-bold fs-5 mt-3">@item.Price.ToString("C")</h6>
+                    <form method="get" asp-controller="Shop" asp-action="Index">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-muted small">Axtarış</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                                <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control border-start-0" placeholder="Məhsul axtar..." />
+                            </div>
                         </div>
-                        <div class="card-footer bg-white border-0 text-center pb-3">
-                            <a asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark w-100">Ətraflı Bax</a>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-muted small">Kateqoriya</label>
+                            <select name="categoryId" class="form-select">
+                                <option value="">Bütün Kateqoriyalar</option>
+                                @foreach (var cat in Model.Categories)
+                                {
+                                    if (Model.SelectedCategoryId == cat.Id)
+                                    {
+                                        <option value="@cat.Id" selected>@cat.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@cat.Id">@cat.Name</option>
+                                    }
+                                }
+                            </select>
                         </div>
-                    </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-muted small">Sıralama</label>
+                            <select name="sortBy" class="form-select">
+                                <option value="date_desc" selected="@(Model.SortBy == "date_desc")">Yenidən Köhnəyə</option>
+                                <option value="date_asc" selected="@(Model.SortBy == "date_asc")">Köhnədən Yeniyə</option>
+                                <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Ucuzdan Bahaya</option>
+                                <option value="price_desc" selected="@(Model.SortBy == "price_desc")">Bahadan Ucuza</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 fw-bold shadow-sm mb-2">
+                            Tətbiq et
+                        </button>
+                        <a asp-controller="Shop" asp-action="Index" class="btn btn-outline-secondary w-100">Sıfırla</a>
+                    </form>
                 </div>
-            }
-        }
-        else
-        {
-            <div class="col-12 text-center py-5">
-                <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
-                <h3 class="text-muted">Axtarışa uyğun məhsul tapılmadı</h3>
-                <a asp-action="Index" class="btn btn-success mt-3">Sıfırla və Bütün Məhsulları Gör</a>
             </div>
-        }
+        </div>
+
+        <div class="col-lg-9 col-md-8">
+            <div class="row g-4">
+                @if (Model.Products.Any())
+                {
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border-0 product-card">
+                                <img src="@item.MainImageUrl" class="card-img-top p-3" alt="@item.Name" style="height: 250px; object-fit: contain;">
+
+                                <div class="card-body text-center">
+                                    <span class="badge bg-light text-dark mb-2">@item.CategoryName</span>
+                                    <h5 class="card-title fw-bold text-dark mb-1">@item.Name</h5>
+                                    <h6 class="text-success fw-bold fs-5 mt-3">@item.Price.ToString("C")</h6>
+                                </div>
+                                <div class="card-footer bg-white border-0 text-center pb-3">
+                                    <a asp-controller="Shop" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark w-100">Ətraflı Bax</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center py-5 mt-5">
+                        <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
+                        <h4 class="text-muted">Axtarışınıza uyğun məhsul tapılmadı.</h4>
+                    </div>
+                }
+            </div>
+
+            @if (Model.Products.Any())
+            {
+                <nav class="mt-5" aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link text-success" href="#">Əvvəlki</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link bg-success border-success" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link text-success" href="#">Növbəti</a>
+                        </li>
+                    </ul>
+                </nav>
+            }
+
+        </div>
     </div>
 </div>

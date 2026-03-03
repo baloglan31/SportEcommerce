@@ -266,3 +266,4 @@ C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\zh-Hant\M
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\obj\Debug\net8.0\SportShop.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\baloglan\Desktop\C# task\SportShop\SportShop\bin\Debug\net8.0\Stripe.net.dll

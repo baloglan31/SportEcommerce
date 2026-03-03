@@ -15,5 +15,7 @@
 
         //sifarisin icindeki mehsullar
         public List<OrderItem> OrderItems { get; set; }
+
+        public string OrderStatus { get; set; }
     }
 }

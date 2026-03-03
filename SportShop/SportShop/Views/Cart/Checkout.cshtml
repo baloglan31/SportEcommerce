@@ -1,67 +1,67 @@
 ﻿@model CheckoutVM
-@{
-    ViewData["Title"] = "Sifarişi Rəsmiləşdir";
-}
 
-<section class="bg-light py-5">
-    <div class="container">
-        <h2 class="mb-4">Sifarişi Rəsmiləşdir</h2>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card shadow-sm border-0 mb-4">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Çatdırılma Məlumatları</h4>
-                        <form asp-controller="Cart" asp-action="Checkout" method="post">
-                            <div class="mb-3">
-                                <label class="form-label">Ad və Soyad</label>
-                                <input asp-for="FullName" class="form-control" required placeholder="Məs: Əli Əliyev" />
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Email</label>
-                                    <input asp-for="Email" type="email" class="form-control" required placeholder="adiniz@mail.com" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Əlaqə Nömrəsi</label>
-                                    <input asp-for="PhoneNumber" class="form-control" required placeholder="050-000-00-00" />
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Çatdırılma Ünvanı</label>
-                                <textarea asp-for="Address" class="form-control" rows="3" required placeholder="Şəhər, Küçə, Bina, Mənzil..."></textarea>
-                            </div>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-5 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-success fw-bold">Sizin Səbətiniz</span>
+                <span class="badge bg-success rounded-pill">@Model.CartItems.Count</span>
+            </h4>
+            <ul class="list-group mb-3 shadow-sm">
+                @foreach (var item in Model.CartItems)
+                {
+                    <li class="list-group-item d-flex justify-content-between lh-condensed p-3">
+                        <div>
+                            <h6 class="my-0 fw-bold">@item.ProductName</h6>
+                            <small class="text-muted">Say: @item.Quantity x @item.Price.ToString("C2")</small>
+                        </div>
+                        <span class="text-muted">@item.TotalPrice.ToString("C2")</span>
+                    </li>
+                }
+                <li class="list-group-item d-flex justify-content-between bg-light p-3">
+                    <span class="fw-bold">Cəmi (AZN)</span>
+                    <strong class="text-success h5 mb-0">@Model.CartTotal.ToString("C2")</strong>
+                </li>
+            </ul>
+        </div>
 
-                            <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Sifarişi Təsdiqlə və Bitir</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-7 order-md-1">
+            <div class="card border-0 shadow-sm p-4">
+                <h4 class="mb-4 fw-bold"><i class="fas fa-truck me-2"></i>Çatdırılma Məlumatları</h4>
+                <form asp-action="Checkout" method="post">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label text-muted small fw-bold">Ad və Soyad</label>
+                            <input asp-for="FullName" class="form-control form-control-lg bg-light border-0" placeholder="Məsələn: Əli Əliyev" required>
+                        </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0">Səbətiniz</h5>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Email</label>
+                            <input asp-for="Email" type="email" class="form-control bg-light border-0" placeholder="ali@example.com" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Telefon</label>
+                            <input asp-for="PhoneNumber" class="form-control bg-light border-0" placeholder="+994 50 000 00 00" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label text-muted small fw-bold">Çatdırılma Ünvanı</label>
+                            <textarea asp-for="Address" class="form-control bg-light border-0" rows="2" placeholder="Küçə, bina, mənzil..." required></textarea>
+                        </div>
                     </div>
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush">
-                            @foreach (var item in Model.CartItems)
-                            {
-                                <li class="list-group-item d-flex justify-content-between lh-sm py-3">
-                                    <div>
-                                        <h6 class="my-0">@item.ProductName</h6>
-                                        <small class="text-muted">Say: @item.Quantity</small>
-                                    </div>
-                                    <span class="text-muted">@item.TotalPrice.ToString("C")</span>
-                                </li>
-                            }
-                            <li class="list-group-item d-flex justify-content-between bg-light py-3">
-                                <span class="fw-bold h5 mb-0">Cəmi (AZN)</span>
-                                <strong class="text-danger h5 mb-0">@Model.CartTotal.ToString("C")</strong>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+
+                    <hr class="my-4">
+
+                    <button class="btn btn-success btn-lg w-100 fw-bold py-3 shadow" type="submit">
+                        <i class="fab fa-stripe me-2"></i> @Model.CartTotal.ToString("C2") - Stripe ilə Ödənişə Keç
+                    </button>
+                    <p class="text-center text-muted small mt-3">
+                        <i class="fas fa-shield-alt"></i> Düyməyə basdıqda təhlükəsiz ödəniş üçün Stripe səhifəsinə yönləndiriləcəksiniz.
+                    </p>
+                    </form>
+
             </div>
         </div>
     </div>
-</section>
+</div>

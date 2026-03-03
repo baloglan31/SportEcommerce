@@ -2,16 +2,26 @@
 
 @{
     ViewData["Title"] = Model.Name;
-    var mainImage = Model.Images.FirstOrDefault(i => i.IsMain)?.Url ?? "/assets/img/no-image.png";
+    var mainImage = Model.Images.FirstOrDefault(i => i.IsMain)?.Url;
     var allImages = Model.Images.ToList();
+
+    
+    double averageRating = 0;
+    int reviewCount = Model.Reviews?.Count ?? 0;
+
+    if (reviewCount > 0)
+    {
+        averageRating = Model.Reviews.Average(r => r.Rating);
+    }
 }
 
 <section class="bg-light">
     <div class="container pb-5">
+
         <div class="row">
-            <div class="col-lg-5 mt-5">
-                <div class="card mb-3">
-                    <img class="card-img img-fluid" src="@mainImage" alt="Məhsul Şəkli" id="product-detail" style="height: 500px; object-fit: cover;">
+            <div class="col-lg-6 mt-5">
+                <div class="card mb-3 shadow-sm border-0">
+                    <img class="card-img img-fluid rounded" src="@mainImage" alt="Məhsul Şəkli" id="product-detail" style="height: 550px; object-fit: cover;">
                 </div>
 
                 <div class="row">
@@ -31,8 +41,8 @@
                                         @for (int j = i; j < i + 3 && j < allImages.Count; j++)
                                         {
                                             <div class="col-4">
-                                                <a href="#">
-                                                    <img class="card-img img-fluid" src="@allImages[j].Url" alt="Qalereya şəkli" style="height: 100px; object-fit: cover; cursor: pointer;" onclick="document.getElementById('product-detail').src='@allImages[j].Url'">
+                                                <a href="javascript:void(0);">
+                                                    <img class="card-img img-fluid rounded shadow-sm" src="@allImages[j].Url" alt="Qalereya şəkli" style="height: 120px; object-fit: cover; cursor: pointer;" onclick="document.getElementById('product-detail').src='@allImages[j].Url'">
                                                 </a>
                                             </div>
                                         }
@@ -51,35 +61,157 @@
                 </div>
             </div>
 
-            <div class="col-lg-7 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="h2">@Model.Name</h1>
+            <div class="col-lg-6 mt-5">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h1 class="h2 fw-bold mb-2">@Model.Name</h1>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="text-warning me-2" style="font-size: 1.2rem;">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= Math.Round(averageRating))
+                                    {
+                                        <i class="fas fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-star"></i>
+                                    }
+                                }
+                            </div>
+                            <span class="text-warning fw-bold">@averageRating.ToString("0.0") <i class="fas fa-star"></i></span>
+                            <span class="text-muted ms-1">(@reviewCount rəy)</span>
+                        </div>
+
                         <p class="h3 py-2 text-success fw-bold">@Model.Price.ToString("C2")</p>
 
-                        <ul class="list-inline">
+                        <ul class="list-inline mt-3">
                             <li class="list-inline-item">
-                                <h6>Kateqoriya:</h6>
+                                <h6 class="text-muted">Kateqoriya:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>@Model.Category.Name</strong></p>
+                                <p class="text-dark"><strong>@Model.Category.Name</strong></p>
                             </li>
                         </ul>
 
-                        <h6>Təsvir:</h6>
-                        <p>@Model.Description</p>
+                        <h6 class="text-muted mt-3">Təsvir:</h6>
+                        <p class="text-secondary" style="line-height: 1.8;">@Model.Description</p>
 
-                        <div class="row pb-3 mt-4">
+                        <div class="row mt-4">
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-success btn-lg btn-add-to-cart" data-product-id="@Model.Id">
-                                    Səbətə At
+                                <button type="button" class="btn btn-success btn-lg btn-add-to-cart py-3 fw-bold" data-product-id="@Model.Id">
+                                    <i class="fas fa-cart-plus me-2"></i>Səbətə At
                                 </button>
                             </div>
                         </div>
 
+                        <div class="mt-4">
+                            @if (TempData["Success"] != null)
+                            {
+                                <div class="alert alert-success border-0 shadow-sm"><i class="fas fa-check-circle me-2"></i>@TempData["Success"]</div>
+                            }
+                            @if (TempData["Error"] != null)
+                            {
+                                <div class="alert alert-danger border-0 shadow-sm"><i class="fas fa-exclamation-triangle me-2"></i>@TempData["Error"]</div>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row mt-5 pt-4 border-top">
+            <div class="col-12 mb-4">
+                <h3 class="fw-bold">Müştəri Rəyləri (@reviewCount)</h3>
+            </div>
+
+            <div class="col-lg-8 mb-4">
+                @if (Model.Reviews != null && Model.Reviews.Any())
+                {
+                    foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedDate))
+                    {
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="fw-bold text-primary mb-0">
+                                        <i class="fas fa-user-circle me-2"></i>@review.AppUser?.FullName
+                                    </h6>
+                                    <small class="text-muted bg-light px-2 py-1 rounded">@review.CreatedDate.ToString("dd MMM yyyy, HH:mm")</small>
+                                </div>
+
+                                <div class="text-warning mb-3">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= review.Rating)
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="far fa-star"></i>
+                                        }
+                                    }
+                                </div>
+
+                                <p class="mb-0 text-secondary" style="font-size: 1.05rem;">@review.Comment</p>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-light text-center py-5 border-0 shadow-sm">
+                        <i class="far fa-comment-dots fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">Bu məhsul üçün hələ rəy yazılmayıb.</h5>
+                        <p class="text-muted mb-0">İlk rəyi siz yazın və digər müştərilərə kömək edin!</p>
+                    </div>
+                }
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow border-0 bg-white" style="position: sticky; top: 20px;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-4 border-bottom pb-2"><i class="fas fa-pen me-2 text-success"></i>Rəy Yaz</h5>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form asp-controller="Shop" asp-action="AddReview" method="post">
+                                <input type="hidden" name="productId" value="@Model.Id" />
+
+                                <div class="mb-4">
+                                    <label class="form-label text-dark fw-bold">Qiymətləndirmə (1-5)</label>
+                                    <select name="rating" class="form-select form-select-lg shadow-sm border-light" required>
+                                        <option value="">Ulduz seçin...</option>
+                                        <option value="5">⭐⭐⭐⭐⭐ (5/5 Mükəmməl)</option>
+                                        <option value="4">⭐⭐⭐⭐ (4/5 Yaxşı)</option>
+                                        <option value="3">⭐⭐⭐ (3/5 Normal)</option>
+                                        <option value="2">⭐⭐ (2/5 Zəif)</option>
+                                        <option value="1">⭐ (1/5 Pis)</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="form-label text-dark fw-bold">Rəyiniz</label>
+                                    <textarea name="comment" class="form-control shadow-sm border-light" rows="5" placeholder="Məhsul haqqında fikirlərinizi ətraflı yazın..." required></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">Rəyi Göndər</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="text-center py-5 bg-light rounded">
+                                <i class="fas fa-lock fa-3x text-muted mb-3"></i>
+                                <h6 class="text-dark fw-bold">Rəy yazmaq üçün sistemə daxil olmalısınız.</h6>
+                                <p class="text-muted small mb-4">Fikirlərinizi bölüşmək üçün hesabınıza daxil olun.</p>
+                                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-success px-4">Giriş Et</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

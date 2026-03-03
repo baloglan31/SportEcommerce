@@ -13,7 +13,8 @@
           "Microsoft.AspNetCore.Identity.UI": "8.0.24",
           "Microsoft.EntityFrameworkCore": "8.0.24",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.24",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.23"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.23",
+          "Stripe.net": "50.4.0"
         },
         "runtime": {
           "SportShop.dll": {}
@@ -1667,6 +1668,18 @@
           }
         }
       },
+      "Stripe.net/50.4.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "System.Configuration.ConfigurationManager": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Stripe.net.dll": {
+            "assemblyVersion": "50.4.0.0",
+            "fileVersion": "50.4.0.0"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2"
@@ -2675,6 +2688,13 @@
       "sha512": "sha512-v/GGlIj2dd7svplFmASWEueu62veKW0MrMtBaZ7QG8aJTSGv2yE+pgUGhXRcQ4nxNOEq/wLBrz1vkth/1SND7A==",
       "path": "nuget.versioning/6.11.0",
       "hashPath": "nuget.versioning.6.11.0.nupkg.sha512"
+    },
+    "Stripe.net/50.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XwtYXLX4tlMLkVS3ghph7eFtZOi6ORguRPm+ZCn1lKclJjvkdQoV+K9cFS4t7o3KyBnMFp9SiQmEcesxDDc+Gg==",
+      "path": "stripe.net/50.4.0",
+      "hashPath": "stripe.net.50.4.0.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",

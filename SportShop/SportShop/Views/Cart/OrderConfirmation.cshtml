@@ -1,0 +1,26 @@
+﻿@model int
+
+<div class="container py-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-body p-5">
+                    <i class="fas fa-check-circle text-success" style="font-size: 6rem;"></i>
+
+                    <h2 class="mt-4 fw-bold text-dark">Ödəniş Uğurla Tamamlandı!</h2>
+                    <p class="lead text-muted">Bizi seçdiyiniz üçün təşəkkür edirik. Sifarişiniz qəbul edildi.</p>
+
+                    <div class="alert alert-success mt-4 mb-4 fs-5" role="alert">
+                        Sizin Sifariş Nömrəniz: <strong>#@Model</strong>
+                    </div>
+
+                    <p class="mb-5 text-muted">Sifarişiniz təsdiqləndi və ən qısa zamanda çatdırılma üçün hazırlanacaq.</p>
+
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-success btn-lg px-5 shadow-sm">
+                        <i class="fas fa-home me-2"></i> Ana Səhifəyə Qayıt
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
