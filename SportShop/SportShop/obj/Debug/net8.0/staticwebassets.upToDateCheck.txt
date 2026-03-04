@@ -24,19 +24,49 @@ wwwroot\assets\img\favicon.ico
 wwwroot\assets\img\feature_prod_01.jpg
 wwwroot\assets\img\feature_prod_02.jpg
 wwwroot\assets\img\feature_prod_03.jpg
+wwwroot\assets\img\products\03209971-d817-4ef9-b725-0ce01f89ba8e_Без названия (6).jpg
+wwwroot\assets\img\products\09e040b2-460f-41a5-b714-f30712fbe47a_images (1).jpg
+wwwroot\assets\img\products\0d849f0f-d0b8-4d9c-aac2-ff921c7218de_Без названия (3).jpg
 wwwroot\assets\img\products\1733fdd7-e9cb-40da-a85d-34bf7dabbe89_istockphoto-2177205396-612x612.jpg
+wwwroot\assets\img\products\2519d7a7-199b-4d0b-ac96-722f0a5f7783_Без названия (5).jpg
+wwwroot\assets\img\products\28512607-8650-493d-8e27-319037531230_Без названия (7).jpg
 wwwroot\assets\img\products\2b74e349-0e1e-4257-8f67-d2aa8f9457e5_Без названия (1).jpg
+wwwroot\assets\img\products\2d4f0c0d-7f18-4cc6-a646-013819bcc85a_Без названия (6).jpg
+wwwroot\assets\img\products\314d7a2c-2b38-4652-8174-7813dfe4591f_Без названия (2).jpg
+wwwroot\assets\img\products\3605277b-2a05-4848-af1a-aa9c6948ce9a_images (2).jpg
 wwwroot\assets\img\products\3a5693bc-52c1-414e-9977-7e5a6c6619e4_Без названия (8).jpg
 wwwroot\assets\img\products\40f63037-b900-4af9-96e2-9000c4cfd1b4_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
+wwwroot\assets\img\products\41a4856a-75a0-4fda-9bd6-fb7bfcf6e1ed_images.png
+wwwroot\assets\img\products\43b12126-90e6-475c-9ac4-27af25e6d5b2_istockphoto-2177205396-612x612.jpg
+wwwroot\assets\img\products\4abbe7d4-ac7e-4fef-ba25-c095f053ee3c_Без названия (7).jpg
 wwwroot\assets\img\products\4c05411b-998d-46df-b0f5-5849c9fd162c_artworks-ANE19EcNxyOvb3Pq-D4t8Ug-t500x500.jpg
+wwwroot\assets\img\products\568fe1eb-7769-47ed-a5fd-55d983cb7dd2_images (1).jpg
+wwwroot\assets\img\products\57d0d122-7382-4f15-84f3-490e043c3293_images.jpg
+wwwroot\assets\img\products\5faa3db0-c46f-42eb-acff-65758d91b394_images (1).jpg
+wwwroot\assets\img\products\630698eb-0c7b-4787-b7b0-078b830055f5_check.png
+wwwroot\assets\img\products\694f8a02-9dcf-404a-9a5f-49be13809be1_Без названия (5).jpg
+wwwroot\assets\img\products\6d8a6946-75b6-4aba-9fff-b124bfcae498_Без названия (4).jpg
+wwwroot\assets\img\products\6f294664-6019-41a1-94b4-ef686fddf3f8_Без названия (4).jpg
+wwwroot\assets\img\products\70eee6f2-13b5-4f77-9b66-839f6eb0b1ad_goofy-ahh-cat-meme-dank-cursed-weirdcore-cringey-banana-long-t-shirt-20240507032058-3w3vnozn-s3.jpg
 wwwroot\assets\img\products\72d9d854-900c-4ae3-9c28-d27147742b16_Без названия (3).jpg
 wwwroot\assets\img\products\81d34fa5-6410-42cf-9816-92482b1931cd_Без названия (2).jpg
+wwwroot\assets\img\products\88e96e9e-928a-40f3-a470-96cc0b200f6d_Без названия (1).jpg
 wwwroot\assets\img\products\9100d1e8-eb02-4973-bdae-86e03d35ca2b_Без названия (7).jpg
 wwwroot\assets\img\products\933fe06b-d958-4744-8199-7c3683c94901_Без названия (4).jpg
+wwwroot\assets\img\products\aa9126d3-2429-444f-9ef1-a7b1fd30fb09_images (2).jpg
+wwwroot\assets\img\products\accd081c-94b3-4b94-af24-d75e90616d91_Без названия (2).jpg
+wwwroot\assets\img\products\b0e32b60-c97f-4e4d-8ceb-3b2055c603f9_Без названия (4).jpg
 wwwroot\assets\img\products\b154d0c3-1e56-4250-a09f-c58da4a736b9_images (1).jpg
+wwwroot\assets\img\products\bbe25eb6-5a6a-4a2d-bf93-7885f4ee29f7_Без названия (5).jpg
+wwwroot\assets\img\products\bef3bd9b-2608-43b2-ae05-59920fc00add_Без названия (6).jpg
 wwwroot\assets\img\products\cc2ea177-a7fc-4bba-a0da-29373b87fb13_check.png
+wwwroot\assets\img\products\cdfec694-706c-4d46-81f9-215bb16fe56e_Без названия (5).jpg
 wwwroot\assets\img\products\d434fd9a-9c8d-41d5-acd1-e2c08a807030_images.jpg
+wwwroot\assets\img\products\d5419063-7433-43b1-bb61-838586c6ae67_Без названия (6).jpg
+wwwroot\assets\img\products\e8447afe-e246-4d6a-a5b3-f3cc01b7fc95_Без названия (2).jpg
 wwwroot\assets\img\products\e8e5af86-3cdb-4e22-9af7-a73160c25b64_Без названия (7).jpg
+wwwroot\assets\img\products\ec7f8130-46f5-44a3-9909-41d2dde39900_images (1).jpg
+wwwroot\assets\img\products\ef41524a-9b40-460e-ac6e-a5c88ba22977_Без названия (8).jpg
 wwwroot\assets\img\product_single_01.jpg
 wwwroot\assets\img\product_single_02.jpg
 wwwroot\assets\img\product_single_03.jpg

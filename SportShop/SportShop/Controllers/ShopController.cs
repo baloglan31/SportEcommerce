@@ -19,74 +19,80 @@ namespace SportShop.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Index(int? categoryId, string? searchTerm, string? sortBy)
+        public async Task<IActionResult> Index(string? searchTerm, int? categoryId, string? sortBy, int page = 1)
         {
-            var categories = await _context.Categories.ToListAsync();
-
-            var productsQuery = _context.Products
-                .Include(p => p.Category)
-                .Include(p => p.Images)
-                .AsQueryable();
+            int pageSize = 12; 
 
             
-            if (categoryId != null && categoryId > 0)
-            {
-                productsQuery = productsQuery.Where(p => p.CategoryId == categoryId);
-            }
+            var query = _context.Products
+                .Include(p => p.Images)
+                .Include(p => p.Category)
+                .AsQueryable();
 
             
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                
-                productsQuery = productsQuery.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm));
+                query = query.Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm));
             }
 
-            
-            switch (sortBy)
+           
+            if (categoryId.HasValue && categoryId.Value > 0)
             {
-                case "price_asc":
-                    productsQuery = productsQuery.OrderBy(p => p.Price); 
-                    break;
-                case "price_desc":
-                    productsQuery = productsQuery.OrderByDescending(p => p.Price);
-                    break;
-                case "name_desc":
-                    productsQuery = productsQuery.OrderByDescending(p => p.Name); 
-                    break;
-                case "name_asc":
-                    productsQuery = productsQuery.OrderBy(p => p.Name); 
-                    break;
-                default:
-                    productsQuery = productsQuery.OrderByDescending(p => p.Id); 
-                    break;
+                query = query.Where(p => p.CategoryId == categoryId.Value);
             }
 
-
-            var products = await productsQuery
-        .Select(p => new ProductListVM
-        {
-            Id = p.Id,
-            Name = p.Name,
-            Price = p.Price,
-            CategoryName = p.Category.Name,
-
-            
-            MainImageUrl = p.Images.Where(i => i.IsMain).Select(i => i.Url).FirstOrDefault() ?? "default.jpg"
-
-        }).ToListAsync();
-
-
-            var model = new ShopVM
+          
+            query = sortBy switch
             {
-                Categories = categories,
-                Products = products,
-                SelectedCategoryId = categoryId,
-                SearchTerm = searchTerm,
-                SortBy = sortBy
+                "price_asc" => query.OrderBy(p => p.Price),
+                "price_desc" => query.OrderByDescending(p => p.Price),
+                "date_asc" => query.OrderBy(p => p.Id), 
+                _ => query.OrderByDescending(p => p.Id) 
             };
 
-            return View(model);
+           
+            int totalProducts = await query.CountAsync(); 
+            int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize); 
+
+           
+            if (page > totalPages && totalPages > 0) page = totalPages;
+            if (page < 1) page = 1;
+
+           
+            var products = await query
+                .Skip((page - 1) * pageSize) 
+                .Take(pageSize) 
+                .ToListAsync();
+
+            var categories = await _context.Categories.ToListAsync();
+
+            
+            var productVMs = products.Select(p => new ProductListVM
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Price = p.Price,
+                CategoryName = p.Category?.Name ?? string.Empty,
+                MainImageUrl = p.Images != null && p.Images.Count > 0 ? p.Images[0].Url : string.Empty,
+                AdditionalImageUrls = p.Images != null && p.Images.Count > 1
+                    ? p.Images.Skip(1).Select(img => img.Url).ToList()
+                    : new List<string>()
+            }).ToList();
+
+            
+            var vm = new ShopVM
+            {
+                Products = productVMs,
+                Categories = categories,
+                SearchTerm = searchTerm,
+                SelectedCategoryId = categoryId,
+                SortBy = string.IsNullOrEmpty(sortBy) ? "date_desc" : sortBy,
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
+
+            return View(vm);
         }
 
 

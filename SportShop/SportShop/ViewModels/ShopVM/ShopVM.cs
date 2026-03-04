@@ -11,5 +11,8 @@ namespace SportShop.ViewModels.ShopVM
 
         public string? SearchTerm { get; set; }
         public string? SortBy { get; set; }
+
+        public int CurrentPage { get; set; } = 1; 
+        public int TotalPages { get; set; }
     }
 }
