@@ -24,6 +24,7 @@ wwwroot\assets\img\favicon.ico
 wwwroot\assets\img\feature_prod_01.jpg
 wwwroot\assets\img\feature_prod_02.jpg
 wwwroot\assets\img\feature_prod_03.jpg
+wwwroot\assets\img\logo.png
 wwwroot\assets\img\products\03209971-d817-4ef9-b725-0ce01f89ba8e_Без названия (6).jpg
 wwwroot\assets\img\products\09e040b2-460f-41a5-b714-f30712fbe47a_images (1).jpg
 wwwroot\assets\img\products\0d849f0f-d0b8-4d9c-aac2-ff921c7218de_Без названия (3).jpg

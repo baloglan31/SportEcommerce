@@ -21,23 +21,21 @@ namespace SportShop.Controllers
 
         public async Task<IActionResult> Index()
         {
-
             var sliders = await _context.Sliders
                 .OrderByDescending(s => s.Id)
                 .Take(3)
                 .ToListAsync();
 
-
             var categories = await _context.Categories
                 .Take(3)
                 .ToListAsync();
 
-
+            
             var featuredProducts = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.Images)
-                .OrderByDescending(p => p.Id)
-                .Take(3)
+                .OrderByDescending(p => p.Id) 
+                .Take(8) 
                 .Select(p => new ProductListVM
                 {
                     Id = p.Id,
@@ -48,7 +46,6 @@ namespace SportShop.Controllers
                 })
                 .ToListAsync();
 
-
             var model = new HomeVM
             {
                 Sliders = sliders,
@@ -57,8 +54,11 @@ namespace SportShop.Controllers
             };
 
             return View(model);
+        }
 
-
+        public IActionResult About()
+        {
+            return View();
         }
     }
 }

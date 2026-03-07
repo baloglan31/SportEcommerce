@@ -1,5 +1,4 @@
 ﻿@using SportShop.ViewModels.HomeVM
-
 @model HomeVM
 
 @{
@@ -7,19 +6,16 @@
 }
 
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-
     <ol class="carousel-indicators">
         @for (int i = 0; i < Model.Sliders.Count; i++)
         {
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
         }
     </ol>
-
     <div class="carousel-inner">
         @for (int i = 0; i < Model.Sliders.Count; i++)
         {
             var slider = Model.Sliders[i];
-
             <div class="carousel-item @(i == 0 ? "active" : "")">
                 <div class="container">
                     <div class="row p-5">
@@ -29,14 +25,7 @@
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-success"><b>@slider.Title</b></h1>
-                                <h3 class="h2">@slider.Subtitle</h3>
-
-                                @if (!string.IsNullOrEmpty(slider.Link))
-                                {
-                                    <p class="mt-4">
-                                        <a href="@slider.Link" class="btn btn-success btn-lg text-white">İndi Bax</a>
-                                    </p>
-                                }
+                                <p>@slider.Subtitle</p>
                             </div>
                         </div>
                     </div>
@@ -44,7 +33,6 @@
             </div>
         }
     </div>
-
     <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
         <i class="fas fa-chevron-left"></i>
     </a>
@@ -52,44 +40,119 @@
         <i class="fas fa-chevron-right"></i>
     </a>
 </div>
-<section class="bg-light">
-    <div class="container py-5">
-        <div class="row text-center py-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Seçilmiş Məhsullar</h1>
-                <p>Sizin üçün xüsusi olaraq seçdiyimiz ən yeni məhsullar.</p>
+
+<section class="bg-light py-4 border-bottom border-top shadow-sm">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-3 col-6">
+                <i class="fas fa-shipping-fast fa-2x text-success mb-3 hover-scale"></i>
+                <h6 class="fw-bold mb-1">Sürətli Çatdırılma</h6>
+                <small class="text-muted">Bütün ölkə daxilində</small>
+            </div>
+            <div class="col-md-3 col-6">
+                <i class="fas fa-shield-alt fa-2x text-success mb-3 hover-scale"></i>
+                <h6 class="fw-bold mb-1">Təhlükəsiz Ödəniş</h6>
+                <small class="text-muted">100% Qorunan sistem</small>
+            </div>
+            <div class="col-md-3 col-6">
+                <i class="fas fa-undo fa-2x text-success mb-3 hover-scale"></i>
+                <h6 class="fw-bold mb-1">Asan Qaytarma</h6>
+                <small class="text-muted">30 gün ərzində zəmanət</small>
+            </div>
+            <div class="col-md-3 col-6">
+                <i class="fas fa-award fa-2x text-success mb-3 hover-scale"></i>
+                <h6 class="fw-bold mb-1">Orijinal Məhsullar</h6>
+                <small class="text-muted">Dünyaca məşhur brendlər</small>
             </div>
         </div>
-        <div class="row">
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row text-center pt-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Günün Ayın Kategoriləri</h1>
+            <p>Axtardığınız hər şey burada!</p>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="col-12 col-md-4 p-5 mt-3 text-center">
+                <a href="/Shop/Index?categoryId=@category.Id">
+                    <img src="~/assets/img/category_default.jpg" onerror="this.src='https://dummyimage.com/300x300/f4f4f4/28a745&text=@category.Name';" class="rounded-circle img-fluid border">
+                </a>
+                <h5 class="text-center mt-3 mb-3">@category.Name</h5>
+                <p class="text-center"><a href="/Shop/Index?categoryId=@category.Id" class="btn btn-success">Məhsullara Bax</a></p>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row text-center py-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1 fw-bold">Yeni Gələnlər</h1>
+                <p class="text-muted">Mağazamıza daxil olan ən son trend məhsullar</p>
+            </div>
+        </div>
+        <div class="row g-4">
             @foreach (var product in Model.FeaturedProducts)
             {
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <a asp-controller="Shop" asp-action="Deatils" asp-route-id="@product.Id">
-                            <img src="@product.MainImageUrl" class="card-img-top" alt="@product.Name" style="height: 300px; object-fit: cover;">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between mb-2">
+                <div class="col-md-4 col-lg-3">
+                    <div class="card h-100 mb-4 product-wap rounded-0 shadow-sm product-card">
+                        <div class="card rounded-0 border-0">
+                            <img src="@product.MainImageUrl" class="card-img-top p-3" alt="@product.Name" style="height: 250px; object-fit: contain;">
+
+                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                <ul class="list-unstyled">
+                                    <li><a class="btn btn-success text-white mt-2" href="/Shop/Details/@product.Id"><i class="far fa-eye"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body text-center">
+                            <span class="badge bg-light text-dark mb-2">@product.CategoryName</span>
+                            <a href="/Shop/Details/@product.Id" class="h5 text-decoration-none text-dark fw-bold d-block mb-2">@product.Name</a>
+
+                            <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right fw-bold" style="font-size: 1.2rem;">@product.Price.ToString("C2")</li>
                             </ul>
-
-                            <a href="/Product/Details/@product.Id" class="h4 text-decoration-none text-dark fw-bold">@product.Name</a>
-                            <p class="text-muted small mt-1">Kateqoriya: <span class="badge bg-secondary">@product.CategoryName</span></p>
-
-                            <p class="card-text mt-3">
-                                Bu məhsul axtardığınız keyfiyyəti və komfortu sizə təqdim edir.
-                            </p>
+                            <p class="text-success fw-bold fs-5 mb-0">@product.Price.ToString("C2")</p>
                         </div>
                     </div>
                 </div>
             }
         </div>
+        <div class="text-center mt-5">
+            <a href="/Shop/Index" class="btn btn-outline-success btn-lg px-5 shadow-sm">
+                Bütün Məhsullara Bax <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
     </div>
 </section>
+
+<style>
+    .hover-scale {
+        transition: transform 0.3s ease;
+    }
+
+        .hover-scale:hover {
+            transform: scale(1.15);
+        }
+
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        }
+</style>
