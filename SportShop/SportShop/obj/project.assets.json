@@ -7959,11 +7959,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\SportShop.csproj",
+      "projectUniqueName": "C:\\Users\\baloglan\\Desktop\\SportEcommerce-main\\SportShop\\SportShop\\SportShop.csproj",
       "projectName": "SportShop",
-      "projectPath": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\SportShop.csproj",
+      "projectPath": "C:\\Users\\baloglan\\Desktop\\SportEcommerce-main\\SportShop\\SportShop\\SportShop.csproj",
       "packagesPath": "C:\\Users\\baloglan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\baloglan\\Desktop\\C# task\\SportShop\\SportShop\\obj\\",
+      "outputPath": "C:\\Users\\baloglan\\Desktop\\SportEcommerce-main\\SportShop\\SportShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8048,6 +8048,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.24, 8.0.24]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.24, 8.0.24]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.24, 8.0.24]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.24, 8.0.24]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
